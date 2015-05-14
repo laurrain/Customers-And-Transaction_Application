@@ -1,0 +1,10 @@
+<h1>Edit</h1>
+
+{{#data}}
+<form action="/customer/update/{{id}}" method="POST">
+	Account: <input type="text" name="Account" value="{{Account}}">
+	Name:    <input type="text" name="Name" value="{{Name}}">	
+	Balance: <input type="text" name="Balance" value="{{Balance}}">
+	<input type="submit" value="Save">
+</form>
+{{/data}}

@@ -1,0 +1,20 @@
+{
+  "name": "IQpoint",
+  "repository": "nothing", 
+  "version": "0.0.0",
+  "description": "IQpoint web app",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "Laurrain",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "express": "~4.12.3",
+    "body-parser": "^1.9.2",
+    "express-handlebars": "^1.1.0",
+    "express-myconnection": "^1.0.4",
+    "mysql": "^2.5.3",
+    "prompt": "^0.2.14"
+  }
+}

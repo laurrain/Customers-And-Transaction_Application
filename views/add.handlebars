@@ -1,0 +1,13 @@
+
+<h1>Add a customer</h1>
+
+<table class="row col-xs-12">
+	{{#data}}
+	<form action="customer/add_customer/{{id}}" method="POST">
+		Account: <input type="text" name="Account" value="{{Account}}">	
+		Name: <input type="text" name="Name" value="{{Name}}">
+		<input type="submit" value="Save">
+	</form>
+	{{/data}}
+   
+</table>

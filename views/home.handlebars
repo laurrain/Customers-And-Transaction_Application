@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Case</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>IQPoint Customer Transaction!</h1>           
+    <a href="http://www.postechdirect.co.za/images/IQRetail_brochure.pdf" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-search"></span> Search</a>
+  </div>
+
+
+
+<h1>Customers</h1>
+
+{{#empty}}
+  <p>The list is empty.</p>
+{{/empty}}
+
+	<div class="main-container container">
+			<!-- button starts-->
+		<div class="navbar container btn-container col-xs-12">
+			
+			<div class="row col-xs-12">
+				<button onclick="location.href='/customer'" class="col-xs-3">
+					Customer
+				</button>
+				<button onclick="location.href='customer/add_customer'" class="col-xs-3" >
+					Add
+				</button>
+				<button onclick="location.href='customer/sort'" class="col-xs-3">
+					Sort
+				</button>
+			</div>
+
+	</div>
+
+
+<div id="add-customer" class="row col-xs-12">
+<table>
+  <tr>
+<td>Account</td><td>Name</td><td>Balance</td>
+</tr>
+
+{{#customer}}	
+<tr>
+	<td>{{Account}}</td><td>{{Name}}</td><td>{{Balance}}</td><td><a href="customer/edit/{{id}}">Edit</a></td><td><a href="/customer/delete/{{id}}">Delete</a></td>
+</tr>
+{{/customer}}
+</table>
+<h1>Add a customer</h1>
+<table class="row col-xs-12">
+	<form action="/customer/add_customer" method="POST">
+		Account: <input type="text" name="Account">	
+		Name: <input type="text" name="Name">
+		<input type="submit" value="Save">
+		<input type="reset" value="Cancel">
+	</form>
+   
+</table>	
+</div>
+
+
+
+</body>
+</html>
+
+
+
