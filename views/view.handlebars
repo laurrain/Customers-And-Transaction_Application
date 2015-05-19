@@ -1,0 +1,12 @@
+<h1>Display a customer</h1>
+
+<html> 
+{{#data}}
+<form method="POST" name="display" action="/customer/display"> 
+	Name: <input type="text" name="Name" value="{{Name}}">
+	<input type="submit" name="Submit" value="display"><input action="action" type="button" value="Exit" onclick="history.go(-1);"/>
+ </form>
+ 
+ {{/data}}
+</html> 
+

@@ -1,0 +1,17 @@
+<h1>Add Customer Transaction</h1>
+
+{{#data}}
+<form action="/CustTran/add_CustTran/{{id}}" method="POST">
+	Date:    <input type="Date" name="Date" value="{{Date}}">
+	Reference: <input type="text" name="Reference" value="{{Reference}}">
+	Amount:  <input type="float" name="Amount" value="{{Amount}}">
+	<fieldset class="radiogroup"> 
+		<legend>Select Debit or Credit</legend> 
+  		<ul class="radio"> 
+    	<li><input type="radio" name="DC" id="D" value="{{this.DC}}" /><label for="D">Debit</label></li> 
+    	<li><input type="radio" name="DC" id="C" value="{{this.DC}}" /><label for="C">Credit</label></li> 
+  		</ul> 
+	</fieldset>
+	<input type="submit" value="Accept"><input action="action" type="button" value="Cancel" onclick="history.go(-1);"/>
+</form>
+{{/data}}
