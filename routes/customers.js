@@ -19,12 +19,12 @@ exports.show_customer = function (req, res, next) {
 	});
 };
 
-exports.display = function (req, res, next) {
+/**exports.display = function (req, res, next) {
 	req.getConnection(function(err, connection){
 		if (err) 
 			return next(err);
 		var data = JSON.parse(JSON.stringify(req.body));
-		connection.query('SELECT ALL Account, Name, Balance from customer where Name = " ?"', [data], function(err, results) {
+		connection.query('SELECT ALL Name, Balance, Date, Reference, Amount, DC from customer inner join CustTran on Number=customer.id where Name ="?"', [data], function(err, results) {
         	if (err) return next(err);
     		res.render( 'view', {
     			customer : results
@@ -32,8 +32,7 @@ exports.display = function (req, res, next) {
     		
       });
 	});
-};
-
+};**/
 
 exports.show_CustTran = function (req, res, next) {
 	req.getConnection(function(err, connection){
@@ -143,6 +142,19 @@ exports.get_CustTran = function(req, res, next){
 	});
 };
 
+exports.get_View = function(req, res, next){
+  var id = req.params.id;
+  req.getConnection(function(err, connection){
+    connection.query('SELECT ALL Name, Balance, Date, Reference, Amount, DC from customer inner join CustTran on Number=customer.id where id =?', [id], function(err,rows){
+      if(err){
+            console.log("Error Selecting : %s ",err );
+      }
+      res.render('view',{page_title:" view Customers - Node.js", data : rows[0]});      
+    }); 
+  });
+};
+
+//'SELECT * FROM  customer WHERE id = ?'
 
 exports.update = function(req, res, next){
 

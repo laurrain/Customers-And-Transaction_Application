@@ -49,7 +49,7 @@ app.post('/customer/update/:id', customer.update);
 app.get('/customer/sort', customer.sort);
 app.get('/customer/delete/:id', customer.delete);
 
-app.get('/CustTran/add_CustTran/:id', customer.get_CustTran);
+
 //app.post('/CustTran/update_CustTran/:id', customer.update_CustTran);
 
 app.get('/add', function(req,res){
@@ -60,13 +60,16 @@ app.post('/customer/add_customer', customer.add_customer);
 app.get('/add_CustTran', function(req,res){
   res.render("add_CustTran", {data:customer})
 })
+app.get('/CustTran/add_CustTran/:id', customer.get_CustTran);
 app.post('/CustTran/add_CustTran/:id', customer.add_CustTran);
 
 
 app.get('/view', function(req,res){
   res.render("view",{data: customer})
 })
-app.post('/customer/display', customer.display);
+app.get('/customer/view/:id', customer.get_View)
+//app.post('/customer/display/:id', customer.display);
+
 
 
 app.get('/custTran',function (req, res, next) {
@@ -101,6 +104,34 @@ app.get('/transaction',function (req, res, next) {
         
       });
 
+  });
+});
+
+app.get('/customer/sort_Trans', function (req, res, next) {
+  req.getConnection(function(err, connection){
+    if (err) 
+      return next(err);
+    connection.query('SELECT ALL Account,Name,Balance FROM customer ORDER BY Name ASC ', [], function(err, results) {
+          if (err) return next(err);
+
+        res.render( 'transaction', {
+          customer : results
+        });
+      });
+  });
+});
+
+app.get('/customer/sort_View', function (req, res, next) {
+  req.getConnection(function(err, connection){
+    if (err) 
+      return next(err);
+    connection.query('SELECT ALL Account,Name,Balance FROM customer ORDER BY Name ASC ', [], function(err, results) {
+          if (err) return next(err);
+
+        res.render( 'enquiries', {
+          customer : results
+        });
+      });
   });
 });
 

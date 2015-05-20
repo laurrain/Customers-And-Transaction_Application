@@ -1,12 +1,23 @@
 <h1>Display a customer</h1>
 
-<html> 
+
 {{#data}}
-<form method="POST" name="display" action="/customer/display"> 
-	Name: <input type="text" name="Name" value="{{Name}}">
-	<input type="submit" name="Submit" value="display"><input action="action" type="button" value="Exit" onclick="history.go(-1);"/>
- </form>
- 
- {{/data}}
+<form method="GET" action="/customer/display/{{id}}"> 
+	<h2>Customer</h2><br>
+	<!--input type="text" name="Account" value="{{Account}}" readonly-->
+	Name: <input type="text" name="Name" value="{{Name}}" readonly>
+	Balance: <input type="text" name="Balance" value="{{Balance}}" readonly><br>
+	<h2>Transactions</h2><br>
+	Date: <input type="text" name="Date" value="{{Date}}" readonly>
+	Reference: <input type="text" name="Reference" value="{{Reference}}" readonly>
+	Amount: <input type="text" name="Amount" value="{{Amount}}" readonly>
+	DC: <input type="text" name="DC" value="{{DC}}" readonly>
+	<input action="action" type="button" value="Exit" onclick="history.go(-1);"/>
+</form>
+{{/data}}
 </html> 
+
+ 
+ 
+
 

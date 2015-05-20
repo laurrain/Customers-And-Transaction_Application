@@ -32,7 +32,7 @@
 					Customer
 				</button>
 				
-				<button onclick="location.href='customer/sort'" class="col-xs-3">
+				<button onclick="location.href='customer/sort_View'" class="col-xs-3">
 					Sort
 				</button>
 				<button onclick="location.href='view'" class="col-xs-3">
@@ -49,7 +49,7 @@
 {{#customer}}	
 <!--a href="CustTran/add_CustTran/{{id}}">Add</a-->
 <tr>
-	<td>{{Account}}</td><td>{{Name}}</td><td>{{Balance}}</td><td>
+	<td>{{Account}}</td><td>{{Name}}</td><td>{{Balance}}</td><td><a href="customer/view/{{id}}">View</a></td>
 </tr>
 {{/customer}}	
 </table>
@@ -60,7 +60,7 @@
 {{#CustTran}}
 <a href="add_CustTran">Add</a></td>
 <tr>
-	<td>{{Date}}</td><td>{{Reference}}</td><td>{{Amount}}</td><td>{{Debit}}</td><td>{{Credit}}</td><td><!--a href="CustTran/add_CustTran/{{id}}">Add</a--></td>
+	<td>{{Date}}</td><td>{{Reference}}</td><td>{{Amount}}</td><td>{{Debit}}</td><td>{{Credit}}</td><td>Add</a--></td>
 </tr>
 {{/CustTran}}
 </table>
@@ -68,17 +68,3 @@
 </body>
 </html>
 
-	<!--tr>
-		<td>Account</td><td>Name</td><td>Balance</td>
-	</tr>
-{{#customer}}	
-
-{{/customer}}
-
-<table>
-{{#customer}}	
-	<tr>
-	<td>{{Account}}</td><td>{{Name}}</td><td>{{Balance}}</td><td><a href="CustTran/add_CustTran/{{id}}">Add</a></td>
-</tr>
-{{/customer}}	
-</table-->

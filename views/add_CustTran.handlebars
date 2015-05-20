@@ -1,7 +1,13 @@
 <h1>Add Customer Transaction</h1>
 
+
 {{#data}}
 <form action="/CustTran/add_CustTran/{{id}}" method="POST">
+	<h2>Customer</h2>
+	Account: <input type="text" name="Account" value="{{Account}}" readonly>
+	Name: <input type="text" name="Name" value="{{Name}}" readonly>
+	Balance: <input type="text" name="Balance" value="{{Balance}}" readonly><br>
+	<h2>Add Transaction</h2>
 	Date:    <input type="Date" name="Date" value="{{Date}}">
 	Reference: <input type="text" name="Reference" value="{{Reference}}">
 	Amount:  <input type="float" name="Amount" value="{{Amount}}">
