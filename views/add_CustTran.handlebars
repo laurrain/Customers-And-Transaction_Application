@@ -3,9 +3,9 @@
 var dc= function(DC){
 	var Amount; 
 	if(DC === "D"){
-		Amount+=Amount
+		Amount+
 	}else if(DC === "C"){
-		Amount-=Amount
+		Amount-
 	}else{
 		return
 	}
@@ -25,8 +25,8 @@ var dc= function(DC){
 	<fieldset class="radiogroup"> 
 		<legend>Select Debit or Credit</legend> 
   		<ul class="radio" >
-    	<li><input type="radio" name="DC" onClick="JavaScript:dc("D")" value="{{DC}}D" /><label for="D">Debit</label></li> 
-    	<li><input type="radio" name="DC" onClick="JavaScript:dc("C")" value="{{DC}}C" /><label for="C">Credit</label></li> 
+    	<li><input type="radio" name="DC" onClick="JavaScript:dc("DC")" value="{{DC}}D" /><label for="D">Debit</label></li> 
+    	<li><input type="radio" name="DC" onClick="JavaScript:dc("DC")" value="{{DC}}C" /><label for="C">Credit</label></li> 
   		</ul>  
 	</fieldset>
 	<input type="submit" value="Accept"><input action="action" type="button" value="Cancel" onclick="history.go(-1);"/>

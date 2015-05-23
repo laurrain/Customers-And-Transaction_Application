@@ -10,6 +10,18 @@ function validateForm() {
     }
 }
 </script>
+<script type="text/javascript">
+var dc= function(DC){
+	var Amount; 
+	if(DC === "D"){
+		Amount+
+	}else if(DC === "C"){
+		Amount-
+	}else{
+		return
+	}
+}
+</script>
 </head>
 <body>
 <h1>Add Customer Transaction</h1>
@@ -25,8 +37,8 @@ function validateForm() {
 	<fieldset class="radiogroup"> 
 		<legend>Select Debit or Credit</legend> 
   		<ul class="radio"> 
-    	<li><input type="radio" name="DC" id="D" value="{{this.DC}}" /><label for="D">Debit</label></li> 
-    	<li><input type="radio" name="DC" id="C" value="{{this.DC}}" /><label for="C">Credit</label></li> 
+    	<li><input type="radio" name="DC" id="D" onClick="JavaScript:dc("DC")" value="{{this.DC}}" /><label for="D">Debit</label></li> 
+    	<li><input type="radio" name="DC" id="C" onClick="JavaScript:dc("DC")" value="{{this.DC}}" /><label for="C">Credit</label></li> 
   		</ul> 
 	</fieldset>
 	<input type="submit" value="Post Batch"><input action="action" type="button" value="Exits" onclick="history.go(-1);"/>

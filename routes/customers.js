@@ -90,7 +90,7 @@ exports.add_CustTran = function (req, res, next) {
 		connection.query('INSERT INTO CustTran SET ? ', [data], function(err, results) {
         	if (err)
                 console.log("Error inserting : %s ", err);
-    connection.query('UPDATE customer set customer.Balance=(select Amount from CustTran where CustTran.Number = customer.id )+? where id=?', [input.Amount,id], function(err, rows){
+    connection.query('UPDATE customer set customer.Balance=(select Amount from CustTran where CustTran.Number = customer.id )+? where id=?', [data.DC,id], function(err, rows){
           if (err){
                     console.log("Error Updating : %s ",err );
           }
@@ -122,8 +122,16 @@ exports.add_BulkTran = function (req, res, next) {
                 console.log("Error inserting : %s ", err);
     connection.query('UPDATE customer INNER JOIN CustTran ON customer.Balance = CustTran.Amount WHERE Balance = ?', [data.Balance,data.Amount], function(err, rows){
           if (err){
+           
                     console.log("Error Updating : %s ",err );
           }
+    connection.query('UPDATE customer set customer.Balance=(select Amount from CustTran where CustTran.Number = customer.id )+? where id=?', [data.DC,id], function(err, rows){
+          if (err){
+                    console.log("Error Updating : %s ",err );
+          }
+         
+              res.redirect('/CustTran');
+        });
          
               res.redirect('/CustTran');
         });
