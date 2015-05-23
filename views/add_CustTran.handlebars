@@ -1,5 +1,16 @@
 <h1>Add Customer Transaction</h1>
-
+<script type="text/javascript">
+var dc= function(DC){
+	var Amount; 
+	if(DC === "D"){
+		Amount+=Amount
+	}else if(DC === "C"){
+		Amount-=Amount
+	}else{
+		return
+	}
+}
+</script>
 
 {{#data}}
 <form action="/CustTran/add_CustTran/{{id}}" method="POST">
@@ -13,10 +24,10 @@
 	Amount:  <input type="float" name="Amount" value="{{Amount}}">
 	<fieldset class="radiogroup"> 
 		<legend>Select Debit or Credit</legend> 
-  		<ul class="radio"> 
-    	<li><input type="radio" name="DC" id="D" value="{{this.DC}}" /><label for="D">Debit</label></li> 
-    	<li><input type="radio" name="DC" id="C" value="{{this.DC}}" /><label for="C">Credit</label></li> 
-  		</ul> 
+  		<ul class="radio" >
+    	<li><input type="radio" name="DC" onClick="JavaScript:dc("D")" value="{{DC}}D" /><label for="D">Debit</label></li> 
+    	<li><input type="radio" name="DC" onClick="JavaScript:dc("C")" value="{{DC}}C" /><label for="C">Credit</label></li> 
+  		</ul>  
 	</fieldset>
 	<input type="submit" value="Accept"><input action="action" type="button" value="Cancel" onclick="history.go(-1);"/>
 </form>

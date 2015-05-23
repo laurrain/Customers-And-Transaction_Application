@@ -63,6 +63,12 @@ app.get('/add_CustTran', function(req,res){
 app.get('/CustTran/add_CustTran/:id', customer.get_CustTran);
 app.post('/CustTran/add_CustTran/:id', customer.add_CustTran);
 
+app.get('/add_BulkTran', function(req,res){
+  res.render("add_BulkTran", {data:customer})
+})
+app.get('/CustTran/add_BulkTran', customer.get_BulkTran);
+app.post('/CustTran/add_BulkTran', customer.add_CustTran);
+
 
 app.get('/view', function(req,res){
   res.render("view",{data: customer})
@@ -87,11 +93,6 @@ app.get('/custTran',function (req, res, next) {
   });
 });
 
-//app.get('/add_CustTran', function(req,res){
-  //res.render("add_CustTran",{data: customer})
-//})
-
-
 app.get('/transaction',function (req, res, next) {
   req.getConnection(function(err, connection){
     if (err) 
@@ -106,6 +107,10 @@ app.get('/transaction',function (req, res, next) {
 
   });
 });
+
+app.get('/bulk', function(req,res){
+  res.render("bulk")
+})
 
 app.get('/customer/sort_Trans', function (req, res, next) {
   req.getConnection(function(err, connection){
