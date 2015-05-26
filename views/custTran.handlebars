@@ -13,7 +13,7 @@
 
 <div class="container">
   <div class="jumbotron">
-    <h1>IQPoint Customer Transaction!</h1>           
+    <h1 align="center">IQPoint Customer Transaction!</h1>           
     <a href="http://www.postechdirect.co.za/images/IQRetail_brochure.pdf" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-search"></span> Search</a>
   </div>
 
@@ -43,17 +43,21 @@
 			</div>
 
 	</div>
-<div id="CustTran" class="row col-xs-12">
+<div id="add" class="row col-xs-12">
 
-<table>
+<table class="table">
+	<thead>
 <tr>
-	<td>Date</td><td>Reference</td><td>Amount</td><td>DC</td>
-
+	<th class="col-md-3">Date</th><th class="col-md-3">Reference</th><th class="col-md-3">Amount</th><th class="col-md-3">DC</th>
+</tr>
+	</thead>
+<tbody>
 {{#CustTran}}
 <tr>
 	<td>{{Date}}</td><td>{{Reference}}</td><td>{{Amount}}</td><td>{{DC}}</td><!--td><a href="CustTran/add_CustTran/{{id}}">Add</a></td-->
 </tr>
 {{/CustTran}}
+</tbody>
 </table>
 </div>
 </body>

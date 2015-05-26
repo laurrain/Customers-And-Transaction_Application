@@ -1,7 +1,8 @@
+'use strict';
 var express = require("express")
 var exphbs = require("express-handlebars")
 
-    mysql = require('mysql'), 
+   var mysql = require('mysql'), 
     myConnection = require('express-myconnection'),
     bodyParser = require('body-parser'),
     customer = require('./routes/customers'),
@@ -25,15 +26,6 @@ app.set("view engine", "handlebars")
 
 app.use("/static", express.static("views"))
 app.use("/static", express.static("."))
-
-/**var cancel = function(req, res,next){
-      req.getConnection(function(err){
-                    console.log("Error Adding : %s ",err );
-              res.redirect('/customer');
-        });
-  };
-
-}**/
 
 //setup middleware
 app.use(myConnection(mysql, dbOptions, 'single'));

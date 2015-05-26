@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/home/laurrain/Iqpoint_project/views/CSS/style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </head>
@@ -13,7 +14,7 @@
 
 <div class="container">
   <div class="jumbotron">
-    <h1>IQPoint Customer Transaction!</h1>           
+    <h1 align="center">IQPoint Customer Transaction!</h1>           
     <a href="http://www.postechdirect.co.za/images/IQRetail_brochure.pdf" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-search"></span> Search</a>
   </div>
 
@@ -31,33 +32,33 @@
 				<button onclick="location.href='/customer'" class="col-xs-3">
 					Customer
 				</button>
-				<!--button onclick="location.href='CustTran/add_CustTran/{{id}}'" class="col-xs-3">
-					Add
-				</button-->
 				<button onclick="location.href='customer/sort_Trans'" class="col-xs-3">
 					Sort
 				</button>
 			</div>
 
 	</div>
-<div id="add-CustTran" class="row col-xs-12">
-<table>
-	<a href="add_CustTran/{{id}}">Add</a></td>
+<div id="add" class="row col-xs-12">
+<table  id="col-md-2" class="table table-hover">
+	<thead>
 	<tr>
-		<td>Account</td><td>Name</td><td>Balance</td>
+		<th class="col-md-3">Account</th><th class="col-md-3">Name</th><th class="col-md-3">Balance</th>
 	</tr>
+</thead>
+<tbody>
 {{#customer}}	
 <!--a href="CustTran/add_CustTran/{{id}}">Add</a-->
 <tr>
 	<td><a href="CustTran/add_CustTran/{{id}}">{{Account}}</a></td><td><a href="CustTran/add_CustTran/{{id}}">{{Name}}</a></td><td><a href="CustTran/add_CustTran/{{id}}">{{Balance}}</a></td><td>
 </tr>
 {{/customer}}	
-</table>
+</tbody>
+</table><br>
 <table>
 {{#CustTran}}
 <a href="add_CustTran">Add</a></td>
 <tr>
-	<td>{{Date}}</td><td>{{Reference}}</td><td>{{Amount}}</td><td>{{Debit}}</td><td>{{Credit}}</td><td><!--a href="CustTran/add_CustTran/{{id}}">Add</a--></td>
+	<td>{{Date}}</td><td>{{Reference}}</td><td>{{Amount}}</td><td>{{Debit}}</td><td>{{Credit}}</td>
 </tr>
 {{/CustTran}}
 </table>

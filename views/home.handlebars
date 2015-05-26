@@ -13,12 +13,12 @@
 
 <div class="container">
   <div class="jumbotron">
-    <h1>IQPoint Customer Transaction!</h1>           
+    <h1 align="center">IQPoint Customer Transaction!</h1>           
     <a href="http://www.postechdirect.co.za/images/IQRetail_brochure.pdf" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-search"></span>Search</a>
   </div>
 
     <h2>Customers Amendments</h2>           
- <h3>Customers</h3>
+ 
 {{#empty}}
   <p>The list is empty.</p>
 {{/empty}}
@@ -52,16 +52,19 @@
 
 
 
-<table>
-  <tr>
-<td>Account</td><td>Name</td><td>Balance</td>
-</tr>
-
+<table class="table">
+	<thead>
+  		<tr>
+			<th class="col-md-3">Account</th><th class="col-md-3">Name</th><th class="col-md-3">Balance</th>
+		</tr>
+	</thead>
+<tBody>
 {{#customer}}	
 <tr>
 	<td>{{Account}}</td><td>{{Name}}</td><td>{{Balance}}</td><td><a href="customer/edit/{{id}}">Edit</a></td><td><a href="/customer/delete/{{id}}">Delete</a></td>
 </tr>
 {{/customer}}
+</tbody>
 </table>
 </body>
 </html>
