@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+    <title>Users Authentication</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+    <style>
+        body        { padding-top:80px; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+<div class="col-sm-6 col-sm-offset-3">
+
+    <h1><span class="fa fa-sign-in"></span>SIGNUP</h1>
+        {{#data}}
+    <!--LOGIN FORM -->
+    <form action="/UserData/signup" name="singup" method="POST">
+        <h2>Register</h2>
+       <div class="form-group">
+            <label>name</label>
+            <input type="text" class="form-control"  name="name" value="{{name}}">
+            <label>username</label>
+            <input type="text" class="form-control"  name="username" value="{{username}}">
+            <label>Password</label>
+            <input type="text" class="form-control" name="password" value="{{password}}">
+        </div>
+
+        <button type="submit" class="btn btn-warning btn-lg">Submit</button>
+    </form>
+        {{/data}}
+            <hr>
+                <p>Or go <a href="/">Logout</a></p>
+
+</div>
+
+</div>
+</body>
+</html>

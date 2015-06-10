@@ -32,7 +32,7 @@
 					Customer
 				</button>
 				
-				<button onclick="location.href='customer/sort_View'" class="col-xs-3">
+				<button onclick="location.href='customer/sort/Name'" class="col-xs-3">
 					Sort
 				</button>
 				
@@ -43,21 +43,20 @@
 <table class="table">
 	<thead>
 	<tr>
-		<th class="col-md-3">Account</th><th class="col-md-3">Name</th><th class="col-md-3">Balance</th>
+		<th class="col-md-3"><a href='/customer/sort/Account'>Account</a></th><th class="col-md-3"><a href='/customer/sort/Name'>Name</a></th><th class="col-md-3"><a href='/customer/sort/Balance'>Balance</a></th>
 	</tr>
 	</thead>
 	<tbody>
 {{#customer}}	
 <!--a href="CustTran/add_CustTran/{{id}}">Add</a-->
 <tr>
-	<td>{{Account}}</td><td>{{Name}}</td><td>{{Balance}}</td><td><a href="customer/view/{{id}}">View</a></td>
+	<td>{{Account}}</td><td>{{Name}}</td><td>{{Balance}}</td><td><a href="customer/view/id">View</a></td>
 </tr>
 {{/customer}}
 	</tbody>	
 </table>
 <table>
 <tr>
-	<td>Date</td><td>Reference</td><td>Amount</td><td>Debit</td><td>Credit</td>
 
 {{#CustTran}}
 <a href="add_CustTran">Add</a></td>

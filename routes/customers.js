@@ -153,6 +153,52 @@ exports.sort = function (req, res, next) {
 	});
 };
 
+exports.sort_transaction = function (req, res, next) {
+  var sortField = req.params.sort_field;
+
+  console.log(sortField)
+
+  req.getConnection(function(err, connection){
+    if (err) 
+      return next(err);
+    connection.query('SELECT Account,Name,Balance FROM customer ORDER BY ??', [sortField], function(err,results) {
+          
+          console.log(results);
+
+          if (err) {
+            console.log(err+'err');
+            return next(err);
+          }
+        res.render( 'transaction',{
+         customer: results
+        });
+      });
+  });
+};
+
+exports.sort_view = function (req, res, next) {
+  var sortField = req.params.sort_field;
+
+  console.log(sortField)
+
+  req.getConnection(function(err, connection){
+    if (err) 
+      return next(err);
+    connection.query('SELECT Account,Name,Balance FROM customer ORDER BY ??', [sortField], function(err,results) {
+          
+          console.log(results);
+
+          if (err) {
+            console.log(err+'err');
+            return next(err);
+          }
+        res.render( 'enquiries',{
+         customer: results
+        });
+      });
+  });
+};
+
 
 exports.get = function(req, res, next){
 	var id = req.params.id;
@@ -194,7 +240,7 @@ exports.get_BulkTran = function(req, res, next){
 exports.get_View = function(req, res, next){
   var id = req.params.id;
   req.getConnection(function(err, connection){
-    connection.query('SELECT ALL Name, Balance, Date, Reference, Amount, DC from customer inner join CustTran on Number=customer.id where id =?', [id], function(err,rows){
+    connection.query('SELECT ALL Name, Balance, Date, Reference, Amount, DC from customer inner join CustTran on Number=customer.id where id =??', [id], function(err,rows){
       if(err){
             console.log("Error Selecting : %s ",err );
       }
@@ -203,7 +249,46 @@ exports.get_View = function(req, res, next){
   });
 };
 
-//'SELECT * FROM  customer WHERE id = ?'
+exports.getUserData = function(req, res, next){
+  //var id = req.params.user_id;
+  //var data = JSON.parse(JSON.stringify(req.body));
+  //var input = JSON.parse(JSON.stringify(req.body));
+  //var data={
+    //username: input.username,
+    //password: input.password
+  //}
+  req.getConnection(function(err, connection){
+    connection.query('SELECT  username, password from UserData' , [], function(err,results){
+      if(err){
+            console.log("Error Selecting : %s ",err );
+      }
+      res.render('users',{data : results});      
+    }); 
+  });
+};
+
+exports.signup = function (req, res, next) {
+  var id = req.params.user_id;
+  req.getConnection(function(err, connection){
+    if (err){ 
+      return next(err);
+    }
+    
+    var input = JSON.parse(JSON.stringify(req.body));
+    var data = {
+                name : input.name,
+                username : input.username,
+                password: input.password
+              };
+          
+    connection.query('INSERT INTO UserData SET ? ', [data], function(err, results) {
+          if (err)
+                console.log("Error inserting : %s ", err);
+         
+              res.redirect('/users');
+        });
+      });
+};
 
 exports.update = function(req, res, next){
 
@@ -252,4 +337,70 @@ exports.delete = function(req, res, next){
 		});
 	});
 };
+
+/**module.exports = function(app, passport) {
+
+    // =====================================
+    // HOME PAGE (with login links) ========
+    // =====================================
+    app.get('/', function(req, res) {
+        res.render('index.ejs'); // load the index.ejs file
+    });
+
+    // =====================================
+    // LOGIN ===============================
+    // =====================================
+    // show the login form
+    app.get('/login', function(req, res) {
+
+        // render the page and pass in any flash data if it exists
+        res.render('login.ejs', { message: req.flash('loginMessage') }); 
+    });
+
+    // process the login form
+    // app.post('/login', do all our passport stuff here);
+
+    // =====================================
+    // SIGNUP ==============================
+    // =====================================
+    // show the signup form
+    app.get('/signup', function(req, res) {
+
+        // render the page and pass in any flash data if it exists
+        res.render('signup.ejs', { message: req.flash('signupMessage') });
+    });
+
+    // process the signup form
+    // app.post('/signup', do all our passport stuff here);
+
+    // =====================================
+    // PROFILE SECTION =====================
+    // =====================================
+    // we will want this protected so you have to be logged in to visit
+    // we will use route middleware to verify this (the isLoggedIn function)
+    app.get('/profile', isLoggedIn, function(req, res) {
+        res.render('profile.ejs', {
+            user : req.user // get the user out of session and pass to template
+        });
+    });
+
+    // =====================================
+    // LOGOUT ==============================
+    // =====================================
+    app.get('/logout', function(req, res) {
+        req.logout();
+        res.redirect('/');
+    });
+};
+
+// route middleware to make sure a user is logged in
+function isLoggedIn(req, res, next) {
+
+    // if user is authenticated in the session, carry on 
+    if (req.isAuthenticated())
+        return next();
+
+    // if they aren't redirect them to the home page
+    res.redirect('/');
+}**/
 
