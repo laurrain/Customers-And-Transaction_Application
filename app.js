@@ -70,12 +70,7 @@ store.get[{username:"attilaz", password:"123wa"},{username: "wilfred", password:
 
  
 var checkUser = function(req, res, next){
-  var user = JSON.parse(JSON.stringify(req.body)),
-   username = req.session.user = user.username;
-   password = req.session.user = user.password;
-
-  //if (req.session.username && req.session.password){
-    if(username && password){
+    if(req.session.user){
     return next();
   }else{
   
