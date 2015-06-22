@@ -1,17 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>IQPoint</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-</head>
-
-<body>
-
-	<head>
+  <head>
     <title>Home</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
@@ -19,31 +8,24 @@
         body        { padding-top:80px; }
     </style>
 </head>
-<body>
-<div class="container">
+    <div class="container">
 
-    <div class="jumbotron text-center">
-        <h1><span class="fa fa-lock"></span> User Authentication</h1>
-
-        <p>Login or Register with:</p>
-
-        <a href="/login" class="btn btn-default"><span class="fa fa-user"></span> Local Login</a>
-        <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Local Signup</a>
+        <a href="/login" class="btn btn-default"><span class="fa fa-user"></span><strong> Local Logout</strong></a>
+        
     </div>
-
-</div>
-
-<div class="container">
+  <body>
+  <div class="nav navbar navbar-default navbar-fixed-top">
+    <a href="/"><h1 align="center">IQPoint Customers Transaction</h1></a>
+  </div>
+        </div>
+  <div class="container">
   <div class="jumbotron">
     <h1 align="center">IQPoint Customer Transaction!</h1>           
     <a href="http://www.postechdirect.co.za/images/IQRetail_brochure.pdf" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-search"></span>Search</a>
   </div>
 
     <h2>Customers Amendments</h2>           
- 
-{{#empty}}
-  <p>The list is empty.</p>
-{{/empty}}
+
 
   <!--main-container div encases the buton and the tables that appear below-->
   <div class="main-container container">
@@ -52,7 +34,33 @@
       <nav id="myNavbar" class="navbar navbar-default" role="navigation">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="container">
-              <div class="navbar-header">
+              <div class="main-container container">
+      
+    <div class="navbar container btn-container col-xs-12">
+      
+      <div class="row col-xs-12">
+        <button onclick="location.href='/customer'" class="col-xs-3">
+          Customer
+        </button>
+        <button onclick="location.href='add'" class="col-xs-3" >
+          Add
+        </button>
+        <button onclick="location.href='/customer/sort'" class="col-xs-3">
+          Sort
+        </button>
+        <button onclick="location.href='/transaction'" class="col-xs-3">
+          Transaction
+        </button>
+        <button onclick="location.href='enquiries'" class="col-xs-3">
+          Customers Enquiries
+        </button>
+        <button onclick="location.href='bulk'" class="col-xs-3">
+          Bulk Transaction
+        </button>
+      </div>
+
+  </div>
+              <!--div class="navbar-header">
                   <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#customer-menu-dropdown">
                       <span class="sr-only">Toggle Menu</span>
                       <span class="icon-bar"></span>
@@ -60,76 +68,18 @@
                       <span class="icon-bar"></span>
                   </button>
                   <a class="navbar-brand" href="/">Home</a>
-              </div>
+              </div-->
               <!-- Collect the nav links, forms, and other content for toggling -->
-              <div class="collapse navbar-collapse" id="shop-menu-dropdown">
-                  <ul class="nav navbar-nav">
-                      <li class="dropdown">
-                          <a href="" data-toggle="dropdown" class="dropdown-toggle">Customers<b class="caret"></b></a>
-                          <ul class="dropdown-menu">
-                              <li><a href='/customer'>Customers</a></li>
-                              <li><a href='/add'>Add</a></li>
-                              <li><a href="popular_products">Sort</a></li>
-                           </ul>
-                          <a href="" data-toggle="dropdown" class="dropdown-toggle">Transactions<b class="caret"></b></a> 
-                          <ul class="dropdown-menu">   
-                              <li><a href='/transaction'>Transaction</a></li>
-                              <li><a href='/customer'>Customer</a></li>
-                              <li><a href='/customer/sort/Name'>Sort</a></li>
-                          </ul>
-                           <a href="" data-toggle="dropdown" class="dropdown-toggle">Customers Enquiries<b class="caret"></b></a> 
-                          <ul class="dropdown-menu">   
-                              <li><a href='enquiries'>Enquiries</a></li>
-                              <li><a href='/customer'>Customer</a></li>
-                              <li><a href='/customer/sort/Name'>Sort</a></li>
-                          </ul>
-                          <a href="" data-toggle="dropdown" class="dropdown-toggle">Bulk<b class="caret"></b></a> 
-                          <ul class="dropdown-menu">   
-                              <li><a href='CustTran/add_BulkTran'>Add</a></li>
-                              <li><a href='/customer'>Back to main Menue</a></li>
-                          </ul>
-              </div>
-                      
-
-	<!--div class="main-container container">
-			
-		<div class="navbar container btn-container col-xs-12">
-			
-			<div class="row col-xs-12">
-				<button onclick="location.href='/customer'" class="col-xs-3">
-					Customer
-				</button>
-				<button onclick="location.href='add'" class="col-xs-3" >
-					Add
-				</button>
-				<button onclick="location.href='/customer/sort'" class="col-xs-3">
-					Sort
-				</button>
-				<button onclick="location.href='/transaction'" class="col-xs-3">
-					Transaction
-				</button>
-				<button onclick="location.href='enquiries'" class="col-xs-3">
-					Customers Enquiries
-				</button>
-				<button onclick="location.href='bulk'" class="col-xs-3">
-					Bulk Transaction
-				</button>
-			</div>
-
-	</div-->
-
-
-
-<table class="table">
-	<thead>
-  		<tr>
-			<th class="col-md-3">Account</th><th class="col-md-3">Name</th><th class="col-md-3">Balance</th>
-		</tr>
-	</thead>
+   <table>         
+  <thead>
+      <tr>
+      <th class="col-md-3">Account</th><th class="col-md-3">Name</th><th class="col-md-3">Balance</th>
+    </tr>
+  </thead>
 <tBody>
-{{#customer}}	
+{{#customer}} 
 <tr>
-	<td>{{Account}}</td><td>{{Name}}</td><td>{{Balance}}</td><td><a href="customer/edit/{{id}}">Edit</a></td><td><a href="/customer/delete/{{id}}">Delete</a></td>
+  <td>{{Account}}</td><td>{{Name}}</td><td>{{Balance}}</td><td><a href="customer/edit/{{id}}">Edit</a></td><td><a href="/customer/delete/{{id}}">Delete</a></td>
 </tr>
 {{/customer}}
 </tbody>

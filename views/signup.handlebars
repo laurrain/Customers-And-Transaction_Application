@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Users Authentication</title>
@@ -12,26 +12,33 @@
 <div class="container">
 
 <div class="col-sm-6 col-sm-offset-3">
-
+<div class="nav navbar navbar-default navbar-fixed-top-center">
+            <a href="/"><h1>Welcom To IQPoint Customer Transaction</h1></a>
+</div>
     <h1><span class="fa fa-sign-in"></span>SIGNUP</h1>
         {{#data}}
     <!--LOGIN FORM -->
-    <form action="/UserData/signup" name="singup" method="POST">
+    <form action="/signup" name="singup" method="POST">
         <h2>Register</h2>
        <div class="form-group">
-            <label>name</label>
-            <input type="text" class="form-control"  name="name" value="{{name}}">
             <label>username</label>
             <input type="text" class="form-control"  name="username" value="{{username}}">
             <label>Password</label>
-            <input type="text" class="form-control" name="password" value="{{password}}">
+            <input type="password" class="form-control" name="password" value="{{password}}">
+            <label>Confirm_password</label>
+            <input type="password" class="form-control" name="confirm_password" value="{{confirm_password}}">
+            {{#if message}}
+                <p>{{message}}</p>
+            {{/if}}
         </div>
-
         <button type="submit" class="btn btn-warning btn-lg">Submit</button>
     </form>
+
         {{/data}}
             <hr>
                 <p>Or go <a href="/">Logout</a></p>
+                 <hr>
+                <p>Or go <a href="/">Login</a></p>
 
 </div>
 

@@ -1,9 +1,47 @@
+past_pages = [],
+administrator = false,
+last_page = "";
 
-/***
- * A very basic CRUD example using MySQL
- */	
+exports.userAuth = function(req, res, next){
+  past_pages = [];
+  userData = JSON.parse(JSON.stringify(req.body)),
+  user = req.session.user = userData.username,
+  password = userData.password;
 
-//todo - fix the error handling
+  req.getConnection(function(err, connection){
+    if(err) return next(err);
+    connection.query('SELECT * FROM UserData WHERE username = ? AND password = ?', [user,password], function(err, results){
+      if(err) return next(err);
+
+      if(results.length > 0){
+        req.session.user = results[0].username;
+        administrator = results[0].admin;
+        res.redirect('/');
+      }else{
+        res.render('login', {message: "username or password incorrect", layout: false})
+      }
+
+    });
+
+  });
+}
+
+exports.checkUser = function(req, res,next){
+  if(req.session.user){
+    past_pages.push(req._parsedOriginalUrl.path)
+    if(req._parsedOriginalUrl.path.match(/transaction/gi) && !administrator){
+      past_pages.splice(-1)
+      last_page = past_pages[past_pages.length-1];
+      res.redirect(last_page)
+    }else{
+      return next();
+    }
+  }else if (!req.session.user){
+    // the user is not logged in redirect him to the login page-
+    res.redirect('/login');
+
+  }
+};
 
 exports.show_customer = function (req, res, next) {
 	req.getConnection(function(err, connection){
@@ -19,20 +57,6 @@ exports.show_customer = function (req, res, next) {
 	});
 };
 
-/**exports.display = function (req, res, next) {
-	req.getConnection(function(err, connection){
-		if (err) 
-			return next(err);
-		var data = JSON.parse(JSON.stringify(req.body));
-		connection.query('SELECT ALL Name, Balance, Date, Reference, Amount, DC from customer inner join CustTran on Number=customer.id where Name ="?"', [data], function(err, results) {
-        	if (err) return next(err);
-    		res.render( 'view', {
-    			customer : results
-    		});
-    		
-      });
-	});
-};**/
 
 exports.show_CustTran = function (req, res, next) {
 	req.getConnection(function(err, connection){
@@ -267,28 +291,49 @@ exports.getUserData = function(req, res, next){
   });
 };
 
-exports.signup = function (req, res, next) {
-  var id = req.params.user_id;
-  req.getConnection(function(err, connection){
-    if (err){ 
-      return next(err);
-    }
-    
-    var input = JSON.parse(JSON.stringify(req.body));
-    var data = {
-                name : input.name,
-                username : input.username,
-                password: input.password
-              };
-          
-    connection.query('INSERT INTO UserData SET ? ', [data], function(err, results) {
-          if (err)
-                console.log("Error inserting : %s ", err);
-         
-              res.redirect('/users');
-        });
-      });
-};
+
+exports.signup =  function(req, res, next){
+    req.getConnection(function(err, connection){
+        if (err){ 
+            return next(err);
+        }
+        
+        var input = JSON.parse(JSON.stringify(req.body));
+        var data = {
+                    username : input.username,
+                    password : input.password
+            };
+
+        if (input.confirm_password == input.password){
+            connection.query('SELECT * FROM UserData WHERE username = ?', input.username, function(err, results1) {
+                    if (err)
+                            console.log("Error inserting : %s ",err );
+
+                if (results1.length == 0){
+                    connection.query('insert into UserData set ?', data, function(err, results) {
+                            if (err)
+                                    console.log("Error inserting : %s ",err );
+                     
+                            req.session.user = input.username;
+                            res.redirect('/');
+                    });
+                }
+                else{
+                    res.render("signup", {
+                                            message : "Username alredy exists!",
+                                            layout : false
+                                            })
+                }
+            });
+        }
+        else{
+            res.render("signup", {
+                message : "Passwords don't match!",
+                layout : false
+            })
+        }
+    });
+}
 
 exports.update = function(req, res, next){
 
@@ -304,28 +349,6 @@ exports.update = function(req, res, next){
     });
 };
 
-/**exports.update_CustTran = function(req, res, next){
-
-	var data = JSON.parse(JSON.stringify(req.body));
-    	var id = req.params.id;
-    	req.getConnection(function(err, connection){
-    		connection.query('UPDATE CustTran SET ? WHERE id = ?', [data, id], function(err, rows){
-    			if (err){
-              			console.log("Error Updating : %s ",err );
-    			}
-          		res.redirect('/CustTran');
-    		});
-
-    		connection.query('UPDATE customer SET ? WHERE id = ?', [data, id], function(err, rows){
-    			if (err){
-              			console.log("Error Updating : %s ",err );
-    			}
-          		res.redirect('/CustTran');
-    		});
-    		
-    });
-};**/
-
 exports.delete = function(req, res, next){
 	var id = req.params.id;
 	req.getConnection(function(err, connection){
@@ -337,70 +360,3 @@ exports.delete = function(req, res, next){
 		});
 	});
 };
-
-/**module.exports = function(app, passport) {
-
-    // =====================================
-    // HOME PAGE (with login links) ========
-    // =====================================
-    app.get('/', function(req, res) {
-        res.render('index.ejs'); // load the index.ejs file
-    });
-
-    // =====================================
-    // LOGIN ===============================
-    // =====================================
-    // show the login form
-    app.get('/login', function(req, res) {
-
-        // render the page and pass in any flash data if it exists
-        res.render('login.ejs', { message: req.flash('loginMessage') }); 
-    });
-
-    // process the login form
-    // app.post('/login', do all our passport stuff here);
-
-    // =====================================
-    // SIGNUP ==============================
-    // =====================================
-    // show the signup form
-    app.get('/signup', function(req, res) {
-
-        // render the page and pass in any flash data if it exists
-        res.render('signup.ejs', { message: req.flash('signupMessage') });
-    });
-
-    // process the signup form
-    // app.post('/signup', do all our passport stuff here);
-
-    // =====================================
-    // PROFILE SECTION =====================
-    // =====================================
-    // we will want this protected so you have to be logged in to visit
-    // we will use route middleware to verify this (the isLoggedIn function)
-    app.get('/profile', isLoggedIn, function(req, res) {
-        res.render('profile.ejs', {
-            user : req.user // get the user out of session and pass to template
-        });
-    });
-
-    // =====================================
-    // LOGOUT ==============================
-    // =====================================
-    app.get('/logout', function(req, res) {
-        req.logout();
-        res.redirect('/');
-    });
-};
-
-// route middleware to make sure a user is logged in
-function isLoggedIn(req, res, next) {
-
-    // if user is authenticated in the session, carry on 
-    if (req.isAuthenticated())
-        return next();
-
-    // if they aren't redirect them to the home page
-    res.redirect('/');
-}**/
-

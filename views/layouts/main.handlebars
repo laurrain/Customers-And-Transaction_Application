@@ -1,18 +1,14 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title align="center">IQPoint</title>
-	<link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="static/css/main_page.css">
-	<link href='static/css/simplesidebar.css' rel='stylesheet' type='text/css'>
-	<script src="static/js/jquery.min.js"></script>
-	<script src="static/js/bootstrap.min.js"></script>
+	<head>
+    <title align="center">IQPoint</title>
+    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/main_page.css">
+    <link href='static/css/simplesidebar.css' rel='stylesheet' type='text/css'>
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
 </head>
 <body>
-<body>
-	<div class="nav navbar navbar-default navbar-fixed-top">
-		<a href="/"><h1 align="center">IQPoint Customers Transaction</h1></a>
-	</div>
 
 	<!--main-container div encases the buton and the tables that appear below-->
 	<div class="main-container container">
@@ -26,11 +22,52 @@
 	            <div class="collapse navbar-collapse" id="shop-menu-dropdown">
 
 	
+			    <!--div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#customer-menu-dropdown">
+                      <span class="sr-only">Toggle Menu</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="/">Home</a>
+              </div>
+	  <div class="collapse navbar-collapse" id="shop-menu-dropdown">
+                  <ul class="nav navbar-nav">
+                      <li class="dropdown">
+                          <a href="" data-toggle="dropdown" class="dropdown-toggle">Customers<b class="caret"></b></a>
+                          <ul class="dropdown-menu">
+                              <li><a href='/customer'>Customers</a></li>
+                              <li><a href='/add'>Add</a></li>
+                              <li><a href="/customer/sort">Sort</a></li>
+                           </ul>
+                          <a href="" data-toggle="dropdown" class="dropdown-toggle">Transactions<b class="caret"></b></a> 
+                          <ul class="dropdown-menu">   
+                              <li><a href='/transaction'>Transaction</a></li>
+                              <li><a href='/customer'>Customer</a></li>
+                              <li><a href='/customer/sort/Name'>Sort</a></li>
+                          </ul>
+                           <a href="" data-toggle="dropdown" class="dropdown-toggle">Customers Enquiries<b class="caret"></b></a> 
+                          <ul class="dropdown-menu">   
+                              <li><a href='/enquiries'>Enquiries</a></li>
+                              <li><a href='/customer'>Customer</a></li>
+                              <li><a href='/customer/sort/Name'>Sort</a></li>
+                          </ul>
+                          <a href="" data-toggle="dropdown" class="dropdown-toggle">Bulk<b class="caret"></b></a> 
+                          <ul class="dropdown-menu">   
+                              <li><a href='/CustTran/add_BulkTran'>Add</a></li>
+                              <li><a href='/customer'>Back to main Menue</a></li>
+                          </ul>
+                    
+              </div-->
+
+
+
+
 	<!--main-container div encases the buton and the tables that appear below-->
 
 
 		{{{body}}}
-	</div>
+	
 	<!-- main-container ends here -->
 
 
@@ -39,12 +76,12 @@
 			<div class="col-xs-1 developers"><a href="/#">developers</a></div>
 			<div class="col-xs-1 copyright"><a href="/#">copyright</a></div>
 			<div class="col-xs-1 disclaimer"><a href="/#">disclaimer</a></div>
-		</div>
+	<div class="footer-left">
+				<div class="col-xs-2">Powered by <a href="http://www.projectcodex.co">CodeX</a></div>
+			</div>
+		</footer>
 
-		<div class="footer-left">
-			<div class="col-xs-2">Powered by <a href="http://www.projectcodex.co">CodeX</a></div>
-		</div>
-	</footer>
+		<script src="static/js/handlebars.js"></script>
 
 </body>
 

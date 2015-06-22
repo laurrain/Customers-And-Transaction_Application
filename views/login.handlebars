@@ -1,6 +1,14 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
+
+    <title align="center">IQPoint</title>
+    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/main_page.css">
+    <link href='static/css/simplesidebar.css' rel='stylesheet' type='text/css'>
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+
     <title>Users Authentication</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
@@ -10,23 +18,25 @@
 </head>
 <body>
 <div class="container">
-
+    <div class="nav navbar navbar-default navbar-fixed-top">
+    <a href="/"><h1 align="center">Welcome IQPoint Customers Transaction</h1></a>
+  </div>
 <div class="col-sm-6 col-sm-offset-3">
 
     <h1><span class="fa fa-sign-in"></span> Login</h1>
 
-    <!-- show any messages that come back with authentication -->
-    <!--% if (message.length > 0) { %>
-        <div class="alert alert-danger"><%= message %></div>
-    <% } %>
-    <LOGIN FORM -->
     <form action="/login" method="POST">
        <div class="form-group">
             <label>username</label>
-            <input type="text" class="form-control"  name="username" value="{{username}}">
+            <!--input type="text" class="form-control"  name="username" value="username"-->
+            <input type="text"  name="username" value="{{username}}"><br>
             <label>Password</label>
-            <input type="text" class="form-control" name="password" value="{{password}}">
+            <!--input type="text" class="form-control" name="password" value="password"-->
+            <input type="password" name="password" value="{{password}}">
         </div>
+        {{#if message}}
+            <p>{{message}}
+        {{/if}}
 
         <button type="submit" class="btn btn-warning btn-lg">Login</button>
     </form>
@@ -34,7 +44,6 @@
             <hr>
 
                 <p>Need an account? <a href="/signup">Signup</a></p>
-                <p>Or go <a href="/">Logout</a>.</p>
 
 </div>
 
