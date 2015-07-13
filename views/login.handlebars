@@ -1,52 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-    <title align="center">IQPoint</title>
-    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="static/css/main_page.css">
+    <link rel="stylesheet" type="text/css" href="static/css/login.css">
     <link href='static/css/simplesidebar.css' rel='stylesheet' type='text/css'>
     <script src="static/js/jquery.min.js"></script>
     <script src="static/js/bootstrap.min.js"></script>
-
-    <title>Users Authentication</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
     <style>
         body        { padding-top:80px; }
     </style>
+    <title>Users Authentication</title>
 </head>
 <body>
+    <div class="fullscreen_bg">
 <div class="container">
     <div class="nav navbar navbar-default navbar-fixed-top">
     <a href="/"><h1 align="center">Welcome IQPoint Customers Transaction</h1></a>
   </div>
-<div class="col-sm-6 col-sm-offset-3">
+<div class="col-sm-4 col-sm-offset-4">
 
-    <h1><span class="fa fa-sign-in"></span> Login</h1>
+    <form class="col-md-6 col-md-offset-4" action="/login" method="POST">
+        <div>
+            <h1><span class="fa fa-sign-in"></span> Login</h1>
+            <input type="text" class="form-control" autocomplete="off" name="username" placeholder="Username" required="" autofocus=""><br>
+            <input type="password" name="password" class="form-control" placeholder="Password" required=""><br>
 
-    <form action="/login" method="POST">
-       <div class="form-group">
-            <label>username</label>
-            <!--input type="text" class="form-control"  name="username" value="username"-->
-            <input type="text"  name="username" value="{{username}}"><br>
-            <label>Password</label>
-            <!--input type="text" class="form-control" name="password" value="password"-->
-            <input type="password" name="password" value="{{password}}">
-        </div>
         {{#if message}}
             <p>{{message}}
         {{/if}}
-
-        <button type="submit" class="btn btn-warning btn-lg">Login</button>
-    </form>
-
+        </div>
+            <button type="submit" class="btn btn-warning btn-lg">Login</button>
+    </form><br>
+</div>
             <hr>
 
-                <p>Need an account? <a href="/signup">Signup</a></p>
+                <p class="col-md-4 col-md-offset-4">Need an account?<p><form class="col-md-4 col-md-offset-4"class="form-signin" action="/signup" method="GET">
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">
+                        Sign Up
+                    </button>
+                </form><br>
 
 </div>
-
+</div>
 </div>
 </body>
 </html>
+    <!--h1 class="form-signin-heading text-muted">Sign In</h1>
+                    <input type="text" class="form-control" autocomplete="off" name="username" placeholder="Username" required="" autofocus="">
+                    <input type="password" name="password" class="form-control" placeholder="Password" required="">
+                    {{#if message}}
+                        <p>{{message}}</p>
+                    {{/if}}
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">
+                        Sign In
+                    </button-->
+

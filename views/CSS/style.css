@@ -1,5 +1,5 @@
 body {
-	background-color: dodgerblue;
+	background-color: #297A52;
 	font-family: "Arial";
 	margin: 0px;
 	padding: 0px;
@@ -9,9 +9,10 @@ body {
 	margin: 0 auto;
 	width: 80%;
 	height: 600px;
-	background-color: #FFF;
+	background-color: #297A52;
 	margin-top: 50px;
 	padding: 15px;
+  text-align: center;
 }
 
 #add-customer {
@@ -30,6 +31,7 @@ input[type=text] {
 	margin: 10px;
 	padding: 10px;
 	font-size: 20px;
+  text-align: center;
 }
 
 h1 {
@@ -38,7 +40,8 @@ h1 {
 
 input[type=submit] {
 	padding: 13px;
-  	border: 2px solid #000;  	
+  	border: 2px solid #000;  
+    text-align: center;	
 };
 
 a.homepage:link, a.homepage:visited {
@@ -75,3 +78,16 @@ a.homepage:hover, a.homepage:focus, a.homepage:active {
     margin-bottom: 1px;
 }
 
+.form {
+    color: #FFFFFF;
+    background-color: #CC3333;
+}
+
+.div {
+  background-color: #297A52;
+}
+
+.nav {
+    color: #FFFFFF;
+    background-color: #CC3333;
+}

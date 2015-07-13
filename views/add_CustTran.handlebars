@@ -1,4 +1,38 @@
-<h1>Add Customer Transaction</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="static/css/main_page.css">
+    <link rel="stylesheet" type="text/css" href="static/css/login.css">
+    <link href='static/css/simplesidebar.css' rel='stylesheet' type='text/css'>
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+    <style>
+        body        { padding-top:80px; }
+        fieldset { overflow:hidden }
+		.some-class { float:left; clear:none; }
+		label { float:left; clear:none; display:block; padding: 2px 1em 0 0; }
+		input[type=radio], input.radio { float:left; clear:none; margin: 2px 0 0 2px; }
+    </style>
+        <style type="text/css">
+    .container {
+        width: 500px;
+        clear: both;
+    }
+    .container input {
+        width: 100%;
+        clear: both;
+    }
+
+    </style>
+
+    <title>Users Authentication</title>
+</head>
+<body>
+    <div class="fullscreen_bg">
+<div class="container">
+<h1 class="text-center">Add Customer Transaction</h1>
 <script type="text/javascript">
 var dc= function(DC){
 	var Amount; 
@@ -11,24 +45,29 @@ var dc= function(DC){
 	}
 }
 </script>
-
+<div class="container">
 {{#data}}
-<form action="/CustTran/add_CustTran/{{id}}" method="POST">
-	<h2>Customer</h2>
-	Account: <input type="text" name="Account" value="{{Account}}" readonly>
-	Name: <input type="text" name="Name" value="{{Name}}" readonly>
+<form class="col-md-4 col-md-offset-4" action="/CustTran/add_CustTran/{{id}}" method="POST">
+	<h4 class="text-center">Customer</h4>
+	Account: <input type="text" name="Account" value="{{Account}}" readonly><br>
+	Name: <input type="text" name="Name" value="{{Name}}" readonly><br>
 	Balance: <input type="text" name="Balance" value="{{Balance}}" readonly><br>
-	<h2>Add Transaction</h2>
-	Date:    <input type="Date" name="Date" value="{{Date}}">
-	Reference: <input type="text" name="Reference" value="{{Reference}}">
-	Amount:  <input type="float" name="Amount" value="{{Amount}}">
-	<fieldset class="radiogroup"> 
-		<legend>Select Debit or Credit</legend> 
-  		<ul class="radio" >
-    	<li><input type="radio" name="DC" onClick="JavaScript:dc("DC")" value="{{DC}}D" /><label for="D">Debit</label></li> 
-    	<li><input type="radio" name="DC" onClick="JavaScript:dc("DC")" value="{{DC}}C" /><label for="C">Credit</label></li> 
-  		</ul>  
-	</fieldset>
+	<h4 class="text-center">Add Transaction</h4>
+	Date:    <input type="Date" name="Date" value="{{Date}}"><br>
+	Reference: <input type="text" name="Reference" value="{{Reference}}"><br>
+	Amount:  <input type="float" name="Amount" value="{{Amount}}"><br>
+	<fieldset>
+  <div class="some-class">
+    <input type="radio" class="radio" name="DC" value="{{DC}}D" id="D" />
+    <label for="y">Debit</label>
+    <input type="radio" class="radio" name="DC" value="{{DC}}C" id="C" />
+    <label for="z">Credit</label>
+  </div>
+</fieldset>
+	
 	<input type="submit" value="Accept"><input action="action" type="button" value="Cancel" onclick="history.go(-1);"/>
 </form>
 {{/data}}
+</div>
+</body>
+</html>

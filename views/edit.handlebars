@@ -1,4 +1,20 @@
-<h1>Edit</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="static/css/main_page.css">
+    <link href='static/css/simplesidebar.css' rel='stylesheet' type='text/css'>
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+    <style>
+        body        { padding-top:80px; }
+    </style>
+    <title>Users Authentication</title>
+</head>
+<body>
+<div class="container">
+<h1 class="text-center">Edit</h1>
 
 {{#data}}
 <form action="/customer/update/{{id}}" method="POST">

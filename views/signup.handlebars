@@ -4,44 +4,41 @@
     <title>Users Authentication</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+     <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+     <link rel="stylesheet" type="text/css" href="static/css/login.css">
     <style>
-        body        { padding-top:80px; }
+        body        { padding-top:80px; text-align: center; }
     </style>
 </head>
-<body>
-<div class="container">
+    <body>
+        <div class="container">
 
-<div class="col-sm-6 col-sm-offset-3">
-<div class="nav navbar navbar-default navbar-fixed-top-center">
             <a href="/"><h1>Welcom To IQPoint Customer Transaction</h1></a>
-</div>
-    <h1><span class="fa fa-sign-in"></span>SIGNUP</h1>
-        {{#data}}
-    <!--LOGIN FORM -->
-    <form action="/signup" name="singup" method="POST">
-        <h2>Register</h2>
-       <div class="form-group">
-            <label>username</label>
-            <input type="text" class="form-control"  name="username" value="{{username}}">
-            <label>Password</label>
-            <input type="password" class="form-control" name="password" value="{{password}}">
-            <label>Confirm_password</label>
-            <input type="password" class="form-control" name="confirm_password" value="{{confirm_password}}">
+    <!--LOGIN FORM-->
+    <form class="col-md-4 col-md-offset-4" class="form-signin" action="/signup" method="POST">
+        <h1><span class="fa fa-sign-in"></span>SIGNUP</h1>
+            <input type="text" class="form-control" name="username" placeholder="Username" required="" autofocus="">
+            <input type="password" class="form-control" name="password" placeholder="Password" required="">
+            <input type="password" class="form-control" name="password_confirm" placeholder="Password_confirm" required=""><br>
             {{#if message}}
                 <p>{{message}}</p>
             {{/if}}
         </div>
         <button type="submit" class="btn btn-warning btn-lg">Submit</button>
     </form>
-
-        {{/data}}
             <hr>
-                <p>Or go <a href="/">Logout</a></p>
+                <p>Or go  <form class="col-md-4 col-md-offset-4"class="form-signin" action="/logout" method="GET">
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">
+                        Log Out
+                    </button>
+                </form></p><br>
+
                  <hr>
-                <p>Or go <a href="/">Login</a></p>
-
-</div>
-
-</div>
-</body>
+                <p "col-md-4 col-md-offset-4">Or <form class="col-md-4 col-md-offset-4" class="form-signin" action="/login" method="GET">
+                    <button class="btn btn-primary btn-block" type="submit">
+                        Log In
+                    </button>
+                </form></p>
+        </div>
+    </body>
 </html>

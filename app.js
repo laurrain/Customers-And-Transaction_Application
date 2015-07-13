@@ -7,8 +7,6 @@ var express = require("express"),
     bodyParser = require('body-parser'),
     customer = require('./routes/customers'),
      parseurl = require('parseurl'),
-     //morgan = require('morgan'),
-     cookieParser = require('cookie-parser'),
      session = require('express-session'),
      
       app = express();
@@ -31,8 +29,6 @@ app.use(myConnection(mysql, dbOptions, 'single'));
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
-  store = require("memory-store");
-  //assert = require("assert")
 
 app.set('trust proxy', 1) // trust first proxy 
 app.use(session({
@@ -51,37 +47,35 @@ app.get('/login',function(req, res){
   res.render('login', {layout:false})
 })
 
-app.post("/login", customer.userAuth)
+app.post("/login", customer.authUser)
 
 app.get("/logout", function(req, res, next){
+
   if (req.session.user){
     delete req.session.user;
     res.redirect("/login")
+  }else {
+    // the user is not logged in redirect him to the login page-
+    res.redirect("/login")
   }
-  // the user is not logged in redirect him to the login page-
-
-  res.redirect('/login');
-}, function(req, res){
-  
-  res.redirect("/login");
-
 })
 
 app.get('/signup', function(req,res){
-  res.render("signup", {data:customer, layout: false})
+  res.render("signup", {layout: false})
 })
 
 app.post('/signup', customer.signup);
 
 
-
+app.get("/admin_panel", customer.checkUser, customer.adminPanel)
+app.post("/admin_panel/:username", customer.checkUser, customer.promoteUser)
 
 app.get('/customer',customer.checkUser, customer.show_customer);
 
 app.get('/customer/edit/:id', customer.get);
 app.post('/customer/update/:id', customer.update);
-app.get('/customer/sort', customer.sort);
-app.get('/customer/sort',customer.sort_transaction);
+app.get('/sort', customer.sort);
+app.get('/sort',customer.sort_transaction);
 app.get('/customer/delete/:id',customer.delete);
 
 
@@ -161,8 +155,8 @@ app.get('/enquiries', customer.checkUser, function (req, res, next) {
 
 app.get('/users', customer.getUserData);
 
-app.get("/*",function(req, res){
-res.render("home")
+app.get("/*", customer.checkUser,function(req, res){
+  res.redirect("/login");
 })
 
 var port = process.env.PORT || 5000;
