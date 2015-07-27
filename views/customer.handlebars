@@ -1,0 +1,33 @@
+<div>
+<a href="/"><h1 align="center">IQPoint Customers Transaction</h1></a>
+
+    <h2 align="center">Customers Amendments</h2>   
+<table class="table" id = "customerList">   
+    <div class="jumbotron">
+    <h1 align="center">IQPoint Customer Transaction!</h1> 
+    <div>
+    	<button align="left" onclick="location.href='/sort'" class="col-xs-1">
+          Sort Name
+        </button>
+        <button onclick="location.href='/home'" class="col-xs-3">
+					Back to Main Menu
+		</button>
+    </div>
+  	</div> 
+  		<form>
+    		<input class ="searchBar" id ="customersSearchBar" type ="text" name ="customer"></input>
+   		</form> 
+   		<a href="/customer/customersList/{{Name}}" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-search"></span>Search</a>     
+  		<thead>
+      		<tr>
+      			<th class="col-md-3">Account</th><th class="col-md-3">Name</th><th class="col-md-3">Balance</th>
+    		</tr>
+  		</thead>
+		<tBody>
+				{{#customer}} 
+			<tr>
+  				<td>{{Account}}</td><td>{{Name}}</td><td>{{Balance}}</td><td><a href="/customer/edit/{{id}}">Edit</a></td><td><a href="/customer/delete/{{id}}">Delete</a></td>
+			</tr>
+				{{/customer}}
+	</tbody>
+</table>

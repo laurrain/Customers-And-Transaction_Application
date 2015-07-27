@@ -5,25 +5,26 @@ var express = require("express"),
     mysql = require('mysql'), 
     myConnection = require('express-myconnection'),
     bodyParser = require('body-parser'),
-    customer = require('./routes/customers'),
-     parseurl = require('parseurl'),
-     session = require('express-session'),
-     
-      app = express();
-      dbOptions = {
+    customersMethods = require('./routes/customersMethods'),
+    userMethods = require('./routes/userMethods'),
+    enquiriesMethods = require('./routes/enquiriesMethods'),
+    bulkTransactionMethods = require('./routes/bulkTransactionMethods'),
+    transactionMethods = require('./routes/transactionMethods')
+    parseurl = require('parseurl'),
+    session = require('express-session');
+    
+var app = express(),
+    dbOptions = {
       host: 'localhost',
       user: 'root',
       password: '42926238',
       port: 3306,
       database: 'mysql'
-};
+    };
 
 app.engine("handlebars", exphbs({defaultLayout:"main"}))
 app.set("view engine", "handlebars")
-
-app.use("/static", express.static("views"))
-app.use("/static", express.static("."))
-
+app.use(express.static('public'));
 app.use(myConnection(mysql, dbOptions, 'single'));
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -35,19 +36,17 @@ app.use(session({
   secret: 'lau lo',
   resave: true,
   saveUninitialized: false,
-  cookie : {maxAge : 5*60000}
+  cookie : {maxAge : 30*60000}
 }))
 
-app.get("/", customer.checkUser, function(req, res){  
+app.get("/", userMethods.checkUser, function(req, res){  
 
   res.render("home", {administrator : administrator})
 })
-
 app.get('/login',function(req, res){
-  res.render('login', {layout:false})
+  res.render('login')
 })
-
-app.post("/login", customer.authUser)
+app.post("/login", userMethods.authUser)
 
 app.get("/logout", function(req, res, next){
 
@@ -58,49 +57,47 @@ app.get("/logout", function(req, res, next){
     // the user is not logged in redirect him to the login page-
     res.redirect("/login")
   }
-})
+});
 
 app.get('/signup', function(req,res){
-  res.render("signup", {layout: false})
+  res.render("signup")
+});
+
+app.post('/signup', userMethods.signup);
+app.get("/admin_panel", userMethods.checkUser, userMethods.adminPanel)
+app.post("/admin_panel/:username", userMethods.checkUser, userMethods.promoteUser)
+
+
+app.get('/customer',userMethods.checkUser, customersMethods.show);
+app.get('/customer/edit/:id', customersMethods.get);
+app.post('/customer/update/:id', customersMethods.update);
+app.get('/sort', userMethods.checkUser, customersMethods.sort);
+app.get('/customer/delete/:id',customersMethods.delete);
+app.get('/customer_add', userMethods.checkUser, function(req,res){
+  res.render("customer_add", {data:customersMethods})
 })
-
-app.post('/signup', customer.signup);
-
-
-app.get("/admin_panel", customer.checkUser, customer.adminPanel)
-app.post("/admin_panel/:username", customer.checkUser, customer.promoteUser)
-
-app.get('/customer',customer.checkUser, customer.show_customer);
-
-app.get('/customer/edit/:id', customer.get);
-app.post('/customer/update/:id', customer.update);
-app.get('/sort', customer.sort);
-app.get('/sort',customer.sort_transaction);
-app.get('/customer/delete/:id',customer.delete);
+app.post('/customer/customer_add', userMethods.checkUser, customersMethods.add);
+app.get('/customers_add', userMethods.checkUser, function(req,res){
+  res.render("customers_add", {data:customersMethods})
+})
+app.get('/customer/customersList/:Name', customersMethods.getSearchCustomers);
+app.get('/customer/search/:searchValue', customersMethods.getSearchCustomers);
 
 
-//app.post('/CustTran/update_CustTran/:id', customer.update_CustTran);
 
-app.get('/add', customer.checkUser, function(req,res){
+app.get('/sort', userMethods.checkUser, transactionMethods.sort);
+app.get('/CustTran/customer_Transaction_add/:id', transactionMethods.get);
+app.post('/CustTran/customer_Transaction_add/:id', transactionMethods.add);
+
+app.get('/add', userMethods.checkUser, function(req,res){
   res.render("add", {data:customer})
 })
-app.post('/customer/add_customer', customer.checkUser, customer.add_customer);
+app.get('/CustTran/add', userMethods.checkUser, bulkTransactionMethods.get);
+app.post('/CustTran/add', userMethods.checkUser, bulkTransactionMethods.add);
 
-app.get('/add_CustTran', customer.checkUser, function(req,res){
-  res.render("add_CustTran", {data:customer})
-})
-app.get('/CustTran/add_CustTran/:id', customer.get_CustTran);
-app.post('/CustTran/add_CustTran/:id', customer.add_CustTran);
+app.get('/customer/view/:id', enquiriesMethods.get)
 
-app.get('/add_BulkTran',customer.checkUser, function(req,res){
-  res.render("add_BulkTran", {data:customer})
-})
-app.get('/CustTran/add_BulkTran', customer.checkUser, customer.get_BulkTran);
-app.post('/CustTran/add_BulkTran', customer.checkUser, customer.add_CustTran);
-
-app.get('/customer/view/:id', customer.get_View)
-
-app.get('/custTran',customer.checkUser, function (req, res, next) {
+app.get('/custTran', userMethods.checkUser, function (req, res, next) {
   req.getConnection(function(err, connection){
     if (err) 
       return next(err);
@@ -115,7 +112,7 @@ app.get('/custTran',customer.checkUser, function (req, res, next) {
   });
 });
 
-app.get('/transaction', customer.checkUser, function (req, res, next) {
+app.get('/customer_Transaction', userMethods.checkUser, function (req, res, next) {
   req.getConnection(function(err, connection){
     if (err) 
       return next(err);
@@ -130,21 +127,21 @@ app.get('/transaction', customer.checkUser, function (req, res, next) {
   });
 });
 
-app.get('/bulk', customer.checkUser, function(req,res){
+app.get('/bulk', userMethods.checkUser, function(req,res){
   res.render("bulk")
 })
 
-app.get('/customer/sort/:sort_field', customer.checkUser, customer.sort_transaction);
+app.get('/customer/sort/:sort_field', userMethods.checkUser, transactionMethods.sort);
 
-app.get('/customer/sort/:sort_field', customer.checkUser, customer.sort_view );
+app.get('/customer/sort/:sort_field', userMethods.checkUser, enquiriesMethods.sort);
 
-app.get('/enquiries', customer.checkUser, function (req, res, next) {
+app.get('/customer_Enquiries', userMethods.checkUser, function (req, res, next) {
   req.getConnection(function(err, connection){
     if (err) 
       return next(err);
         connection.query('SELECT * from customer', [], function(err, results) {
           if (err) return next(err);
-        res.render( 'enquiries', {
+        res.render( 'customer_Enquiries', {
           customer : results
         });
         
@@ -153,9 +150,9 @@ app.get('/enquiries', customer.checkUser, function (req, res, next) {
   });
 });
 
-app.get('/users', customer.getUserData);
+app.get('/users', userMethods.getUserData);
 
-app.get("/*", customer.checkUser,function(req, res){
+app.get("/*", userMethods.checkUser,function(req, res){
   res.redirect("/login");
 })
 

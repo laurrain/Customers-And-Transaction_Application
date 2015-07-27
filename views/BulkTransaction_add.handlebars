@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html>
 <head>
 <script>
@@ -28,7 +28,7 @@ var dc= function(DC){
 
 
 {{#data}}
-<form action="/CustTran/add_BulkTran" name="add_BulkTran" onsubmit="return validateForm()" method="POST">
+<form action="/CustTran/BulkTransaction_add" name="BulkTransaction_add" onsubmit="return validateForm()" method="POST">
 	Valid Number Digit: <input type="integer" name="1234" required>
 	<h2>Add Transaction</h2>
 	Date:    <input type="Date" name="Date" value="{{Date}}">
@@ -47,8 +47,3 @@ var dc= function(DC){
 
 </body>
 </html>
-
-<!--form name="myForm" action="demo_form.asp"
-onsubmit="return validateForm()" method="post">
-Name: <input type="text" name="fname">
-<input type="submit" value="Submit"-->
