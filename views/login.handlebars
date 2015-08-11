@@ -1,50 +1,44 @@
-
-<!--div class="main-container container">
+<div class="fullscreen"> 
+<div class="main-container container">
         <div class="nav navbar navbar-default">
     <a href="/"><h1 align="center">Welcome IQPoint Customers Transaction</h1></a>
-  </div><br><br>
+  </div>
     <div class="col-sm-4 col-sm-offset-4">
-
-    <form class="col-md-6 col-md-offset-4 vertical-center" action="/login" method="POST">
-        <div>
-            <h1><span class="col-lg-3 fa fa-sign-in"></span> Login</h1>
-            <input type="text" class="form-control" autocomplete="off" name="username" placeholder="Username" required="" autofocus=""><br>
-            <input type="password" name="password" class="form-control" placeholder="Password" required=""><br><br>
-
-        {{#if message}}
-            <p>{{message}}
-        {{/if}}
-
-
-        </div>
-            <button type="submit" class="btn btn-warning btn-lg">Login</button>
-    </form><br>
-
-    <hr>
+    <!-- form container -->
+    <div class="form-container">
+        <!-- form header -->
+        <h1 class="form-header heading-color">Sign in</h1>
+        <!-- end of form header -->
+        <!-- form content -->
+        <form class="form-content"  action="/login" method="POST">
+            <fieldset>
+                <input type="text" placeholder="username" class="form-input-control" name="username" value="{{username}}" />
+                <input type="password" placeholder="Password" class="form-input-control" name="password" value="{{password}}">
+                 {{#if message}}
+                <p>{{message}}</p>
+                {{/if}}
+                <input type="submit" value="Sign in" class="form-submit-control" />
+            </fieldset>
+        </form>
+        <hr>
 
                 <p class="col-md-3 col-md-offset-3">Need an account?<p><form class="col-lg-6 fa fa-sign-in" action="/signup" method="GET"><br><br>
                     <button class="btn-lg btn-primary btn-block" type="submit">
                         Sign Up
                     </button>
-                </form><br>
-
-</div-->
-<div class="container">
-    <h1 class="title text-center">Welcome IQPoint Customers Transaction</h1>
-    <div class="col-sm-4 col-sm-offset-4" class="login-form">
-        <form id="login-form" method="post" class="form-signin" role="form">
-            <input name="username" id="username" type="text" class="form-control"placeholder="Username" autofocus> 
-            <input name="password" id="password" type="password" class="form-control enable" placeholder="Password"><br>
-            <button class="btn btn-block bt-login" type="submit">Sign In</button>
-        </form>
-        <div class="form-footer">
-            <div class="row">
-                <div class="col-xs-7 col-sm-7 col-md-7"class="btn-inline">
-                    <i class="fa fa-lock"></i> 
-                    <a href="#"> Forgot password? </a>
-                </div>
-            
-                <button class="col-sm-12" class="btn bt-login" type="submit"> Sign Up </button>
+                </form>
+        <!-- end of form-content -->
+        <!-- form footer -->
+        <div class="form-footer group">
+            <div class="social-container fr">
+                <a href="#" class="fontawesome-google-plus"></a>
+                <a href="#" class="fontawesome-twitter"></a>
+                <a href="#" class="fontawesome-facebook"></a>
+            </div>
+            <div style="clear:both;"></div>
         </div>
+        <!-- end of From footer -->
+    <div style="clear:both;"></div>
     </div>
+    <!-- end of form container -->
 </div>

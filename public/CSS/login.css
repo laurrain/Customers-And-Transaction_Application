@@ -1,44 +1,284 @@
-
-/* ------- This is the CSS Reset ------- */
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, 
-abbr, acronym, address, big, cite, code, del,
-dfn, em, img, ins, kbd, q, s, samp, small,
-strike, strong, sub, sup, tt, var, u, i, center,
-dl, dt, dd, ol, ul, li, fieldset, form, label,
-legend, table, caption, tbody, tfoot, thead, tr,
-th, td, article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup, menu,
-nav, output, ruby, section, summary, time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+.fullscreen  {
+  background-image: url('/images/15.jpg');
+  font-family: "Arial";
+  margin: 0px;
+  padding: 0px;
+}
+#container{
+  margin: 0 auto;
+  width: 10%;
+  height: 1000px;
+  background-color: #297A52;
+  margin-top: 50px;
+  padding: 15px;
+  text-align: center;
 }
 
-/* ------- HTML5 display-role reset for older browsers ------- */
-
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after, q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
+#add-customer {
+  border : 1px solid;
+  width: 50%;
+  padding: 15px;
 }
 
+#add-custTran {
+  border : 1px solid;
+  width: 50%;
+  padding: 15px;
+}
+
+input[type=text] {
+  margin: 10px;
+  padding: 10px;
+  font-size: 20px;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  font: 5em Courier, "Comic Sans MS", Georgia, sans-serif;
+  font-weight: bolder;
+}
+
+input[type=submit] {
+  padding: 13px;
+    border: 2px solid #000;  
+    text-align: center; 
+};
+
+a.homepage:link, a.homepage:visited {
+  padding: 1px 10px 1px 10px;
+  color: #fff;
+  background: #555;
+  border-radius: 3px;
+  border: 1px outset rgba(50,50,50,.5);
+  font-family: georgia, serif;
+  font-size: 14px;
+  font-style: italic;
+  text-decoration: none;
+}
+
+a.homepage:hover, a.homepage:focus, a.homepage:active {
+  background-color: #666;
+}
+
+.userHeader{
+    color: #fff;
+    display: inline;
+    margin-left: 2em;
+}
+
+.logoutHead{
+    background-color: #fff;
+    color: red;
+    padding: 2px;
+    border-radius: 3px;
+    display: inline;
+    float: right;
+    margin-right: 2em;
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+.form {
+    color: #FFFFFF;
+    background-color: #CC3333;
+}
+
+.div {
+  background-color: #297A52;
+  font: 4em Courier, "Comic Sans MS", Georgia, sans-serif;
+  font-weight: bolder;
+  width: 100%;
+  height: 90px;
+}
+button {
+  font: 1em Courier, "Comic Sans MS", Georgia, sans-serif;
+  font-weight: bolder;
+  width: 50%;
+  height: 80px;
+}
+
+.nav {
+    color: #FFFFFF;
+    background-color: #555;
+}
+
+
+
+.error {
+    display: none;
+    position: absolute;
+    top: 27px;
+    right: -55px;
+    width: 40px;
+    height: 40px;
+    background: #2d2d2d; /* browsers that don't support rgba */
+    background: rgba(45,45,45,.25);
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+}
+
+.error span {
+    display: inline-block;
+    margin-left: 2px;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 40px;
+    text-shadow: 0 1px 2px rgba(0,0,0,.1);
+    -o-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+
+}
+
+.connect {
+    width: 305px;
+    margin: 35px auto 0 auto;
+    font-size: 18px;
+    font-weight: 700;
+    text-shadow: 0 1px 3px rgba(0,0,0,.2);
+}
+
+.connect a {
+    display: inline-block;
+    width: 32px;
+    height: 35px;
+    margin-top: 15px;
+    -o-transition: all .2s;
+    -moz-transition: all .2s;
+    -webkit-transition: all .2s;
+    -ms-transition: all .2s;
+}
+
+
+/*
+Inspired by the dribble shot http://dribbble.com/shots/981366-Sign-In?list=searches&tag=flat_form
+*/
+
+/*--------- Font ------------*/
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans);
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+/* fontawesome */
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+
+/*------------- Basic reset -------------------*/
+*{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;        
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;    
+}
+body{    
+    
+    font-family: 'Droid Sans', sans-serif;
+    line-height: 1;
+    font-size: 16px; }
+/*------ utiltity classes -----*/
+.fl{ float:left; }
+.fr{ float: right; }
+/*its also known as clearfix*/
+.group:before,
+.group:after {
+    content: "";
+    display: table;
+} 
+.group:after {
+    clear: both;
+}
+.group {
+    zoom: 1;  /*For IE 6/7 (trigger hasLayout) */
+}
+
+.main-container{
+    width: 1000px;
+    margin: 100px auto;
+    text-align: center;
+}
+
+h1 {
+  text-align: center;
+  font: 3em Courier, "Comic Sans MS", Georgia, sans-serif;
+  font-weight: bolder;
+}
+.form-container {
+    width: 350px;
+    margin: 100px auto;
+    text-align: center;
+    overflow: hidden;    
+    -webkit-border-radius: 5px;
+/*    -moz-border-radius: 0.312rem;*/
+    border-radius: 5px;
+}
+.form-header{
+    background: #4d4d4d;
+    color: #b8eae6;
+    text-transform: uppercase;
+}
+.form-container .form-header {                
+    font-size: 3.2rem;
+    padding: 1.30rem;        
+}
+.form-container .form-content {
+    background: #FD795B;
+}
+.form-content fieldset{    
+    padding: 1rem;
+    border: none;    
+}
+.form-content input[type="text"],.form-content input[type="password"],.form-input-control,.form-content input[type="submit"],.form-input-submit{
+    display: block;
+    width: 100%;
+    margin:0 auto;        
+    -webkit-border-radius: 0.125rem;
+    -moz-border-radius: 0.125rem;
+    border-radius: 0.125rem;
+}
+.form-content input[type="text"],.form-content input[type="password"],.form-input-control{
+    padding: 0.925rem;
+    border: 1px solid #DBD1CE;
+    background: #FFF3F0;  
+    text-align: left;   
+}
+.form-content input[type="submit"],.form-input-submit{
+    background: #fa8469;
+    padding: 0.925rem;
+    margin-top: 0.925rem;
+    color: #EDEAE7;
+    text-transform: uppercase;
+    font-size: 2rem;
+    border: none;    
+    border-top: 1px solid #FD9A83;
+    border-bottom: 1px solid #F17457;
+}
+.form-footer{    
+    line-height: 1.9;        
+}
+.footer-text{
+    color: #B8EAE6;
+    font-size: 1rem;
+    text-transform: uppercase;
+    padding: 0.56rem 0 0 1.25rem;
+}
+.social-container a{
+    text-decoration: none;
+    color: #b8eae6;
+    font-size: 1.7rem;
+    padding: 0.625rem 1.25rem;
+}
+.social-container a:hover{
+    background: #6B6A6A;
+}
+
+.connect a.facebook { background: url(../img/facebook.png) center center no-repeat; }
+.connect a.twitter { background: url(../img/twitter.png) center center no-repeat; }
+
+.connect a:hover { background-position: center bottom; }

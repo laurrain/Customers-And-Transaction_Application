@@ -24,11 +24,12 @@ var dc= function(DC){
 </script>
 </head>
 <body>
+	<div class="tuna"></div>
 <h1>Add Customer Transaction</h1>
 
 
 {{#data}}
-<form action="/CustTran/BulkTransaction_add" name="BulkTransaction_add" onsubmit="return validateForm()" method="POST">
+<form class="form-content" action="/CustTran/BulkTransaction_add" name="BulkTransaction_add" onsubmit="return validateForm()" method="POST">
 	Valid Number Digit: <input type="integer" name="1234" required>
 	<h2>Add Transaction</h2>
 	Date:    <input type="Date" name="Date" value="{{Date}}">
@@ -41,9 +42,9 @@ var dc= function(DC){
     	<li><input type="radio" name="DC" onClick="JavaScript:dc("DC")" value="{{this.DC}}" /><label for="C">Credit</label></li> 
   		</ul> 
 	</fieldset>
-	<input type="submit" value="Post Batch"><input action="action" type="button" value="Exits" onclick="history.go(-1);"/>
+	<input type="submit" value="Post Batch"><input action="action" type="submit" value="Exits" onclick="history.go(-1);"/>
 </form>
 {{/data}}
-
+</div>
 </body>
 </html>

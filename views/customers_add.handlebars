@@ -1,15 +1,15 @@
 
-<div>
+<div class="background">
 <h1 class="text-center">Add a customer</h1>
 
 <div class="container">
 	{{#data}}
-	<form class="col-sm-4 col-sm-offset-4" action="/customer/add_customer" method="POST">
+	<form class="form-content  col-sm-4 col-sm-offset-4" action="/customer/customers_add" method="POST">
 		Account: <input type="text" name="Account" value="{{Account}}"><br>	
 		Name: <input type="text" name="Name" value="{{Name}}"><br><br>
-		<input type="submit" class="btn btn-warning btn-lg" value="Save"><br>
+		<input type="submit" class="btn btn-warning btn-lg" value="Save"><input action="action" type="submit" value="Cancel" onclick="history.go(-1);"/><br>
 	</form>
 	{{/data}}
    
 </div>
-<dive>
+</div>

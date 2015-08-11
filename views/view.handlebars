@@ -13,11 +13,12 @@
     <title>Users Authentication</title>
 </head>
 <body>
+	<div class="midground">
 <div class="container">
 <h1 class="text-center">Display a customer</h1>
 
 {{#data}}
-<form method="GET" action="/customer/display/{{id}}"> 
+<form class="form-content" method="GET" action="/customer/display/{{id}}"> 
 	<h2>Customer</h2><br>
 	<!--input type="text" name="Account" value="{{Account}}" readonly-->
 	Name: <input type="text" name="Name" value="{{Name}}" readonly>
@@ -26,8 +27,8 @@
 	Date: <input type="text" name="Date" value="{{Date}}" readonly>
 	Reference: <input type="text" name="Reference" value="{{Reference}}" readonly>
 	Amount: <input type="text" name="Amount" value="{{Amount}}" readonly>
-	DC: <input type="text" name="DC" value="{{DC}}" readonly>
-	<input action="action" type="button" value="Exit" onclick="history.go(-1);"/>
+	DC: <input type="text" name="DC" value="{{DC}}" readonly><br>
+	<input action="action" type="submit" value="Exit" onclick="history.go(-1);"/>
 </form>
 {{/data}}
 </div>

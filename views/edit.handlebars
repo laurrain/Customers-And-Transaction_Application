@@ -13,14 +13,14 @@
     <title>Users Authentication</title>
 </head>
 <body>
-<div class="container">
+<div class="midground" class="container">
 <h1 class="text-center">Edit</h1>
 
 {{#data}}
-<form action="/customer/update/{{id}}" method="POST">
+<form class="form-content col-sm-4 col-sm-offset-4" action="/customer/update/{{id}}" method="POST">
 	Account: <input type="text" name="Account" value="{{Account}}">
 	Name:    <input type="text" name="Name" value="{{Name}}">	
 	Balance: <input type="text" name="Balance" value="{{Balance}}">
-	<input type="submit" value="Save">
+	<input type="submit" value="Save"><input action="action" type="submit" value="Cancel" onclick="history.go(-1);"/>
 </form>
 {{/data}}

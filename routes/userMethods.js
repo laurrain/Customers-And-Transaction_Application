@@ -96,16 +96,17 @@ exports.signup = function(req, res, next){
     });
 }
 exports.authUser = function(req, res, next){
+    past_pages = [];
+    var userData = JSON.parse(JSON.stringify(req.body));
+    var user = userData.username,
+        password = userData.password;
     req.getConnection(function(err, connection){
         if (err) 
             return next(err);
-    past_pages = [];
 
-    var userData = JSON.parse(JSON.stringify(req.body)),
-      user = userData.username,
-      password = userData.password;
-        connection.query('SELECT * FROM UserData WHERE username = ?', user, function(err, results) {
+        connection.query('SELECT * FROM UserData WHERE username = ? ' , [user], function(err, results) {
             if (err) return next(err);
+             console.log(results+"......");
 
             if(results.length > 0){
                 bcrypt.compare(password, results[0].password,  function(err, reply){

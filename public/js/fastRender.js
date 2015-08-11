@@ -10,5 +10,6 @@ $(document).ready(function(){
 				//async: true
 			});
 		});
+
 });
 

@@ -73,10 +73,10 @@ app.get('/customer/edit/:id', customersMethods.get);
 app.post('/customer/update/:id', customersMethods.update);
 app.get('/sort', userMethods.checkUser, customersMethods.sort);
 app.get('/customer/delete/:id',customersMethods.delete);
-app.get('/customer_add', userMethods.checkUser, function(req,res){
-  res.render("customer_add", {data:customersMethods})
+app.get('/customers_add', userMethods.checkUser, function(req,res){
+  res.render("customers_add", {data:customersMethods})
 })
-app.post('/customer/customer_add', userMethods.checkUser, customersMethods.add);
+app.post('/customer/customers_add', userMethods.checkUser, customersMethods.add);
 app.get('/customers_add', userMethods.checkUser, function(req,res){
   res.render("customers_add", {data:customersMethods})
 })
