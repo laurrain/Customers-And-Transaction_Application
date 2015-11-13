@@ -1,4 +1,4 @@
-//'use strict';
+'use strict';
 var express = require("express"),
    exphbs = require("express-handlebars"),
 
@@ -9,10 +9,14 @@ var express = require("express"),
     userMethods = require('./routes/userMethods'),
     enquiriesMethods = require('./routes/enquiriesMethods'),
     bulkTransactionMethods = require('./routes/bulkTransactionMethods'),
-    transactionMethods = require('./routes/transactionMethods')
+    transactionMethods = require('./routes/transactionMethods'),
     parseurl = require('parseurl'),
     session = require('express-session');
-    
+
+var path = require('path');
+
+path.join(__dirname, '/public/CSS/style.less');
+
 var app = express(),
     dbOptions = {
       host: 'localhost',

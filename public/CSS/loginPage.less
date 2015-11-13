@@ -1,0 +1,109 @@
+/*
+Inspired by the dribble shot http://dribbble.com/shots/981366-Sign-In?list=searches&tag=flat_form
+*/
+
+/*--------- Font ------------*/
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans);
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+/* fontawesome */
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+
+/*------------- Basic reset -------------------*/
+*{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;        
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;    
+}
+
+
+
+
+.main-container{
+    width: 500px;
+    margin: 30px auto;
+    text-align: center;
+}
+
+h1 {
+  text-align: center;
+  font: 3em Courier, "Comic Sans MS", Georgia, sans-serif;
+  font-weight: bolder;
+}
+.form-container {
+    overflow: hidden;    
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 0.312rem;
+    border-radius: 10px;
+    width: 350px;
+    .main-container;
+}
+.form-header{
+    background: #4d4d4d;
+    color: #b8eae6;
+    text-transform: uppercase;
+}
+.form-container .form-header {                
+    font-size: 3.2rem;
+    padding: 1.30rem;        
+}
+.form-container .form-content {
+    background: #FD795B;
+}
+.form-content fieldset{    
+    padding: 1rem;
+    border: none;    
+}
+.form-content input[type="text"],.form-content input[type="password"],.form-input-control,.form-content input[type="submit"],.form-input-submit{
+    display: block;
+    width: 100%;
+    margin:0 auto;        
+    -webkit-border-radius: 0.125rem;
+    -moz-border-radius: 0.125rem;
+    border-radius: 0.125rem;
+}
+.form-content input[type="text"],.form-content input[type="password"],.form-input-control{
+    padding: 0.925rem;
+    border: 1px solid #DBD1CE;
+    background: #FFF3F0;  
+    text-align: left;   
+}
+.form-content input[type="submit"],.form-input-submit{
+    background: #fa8469;
+    padding: 0.925rem;
+    margin-top: 0.925rem;
+    color: #EDEAE7;
+    text-transform: uppercase;
+    font-size: 2rem;
+    border: none;    
+    border-top: 1px solid #FD9A83;
+    border-bottom: 1px solid #F17457;
+}
+.form-footer{    
+    line-height: 1.9;        
+}
+.footer-text{
+    color: #B8EAE6;
+    font-size: 1rem;
+    text-transform: uppercase;
+    padding: 0.56rem 0 0 1.25rem;
+}
+.social-container a{
+    text-decoration: none;
+    color: #b8eae6;
+    font-size: 1.7rem;
+    padding: 0.625rem 1.25rem;
+}
+.social-container a:hover{
+    background: #6B6A6A;
+}
+
+.connect a:hover { background-position: center bottom; }
+

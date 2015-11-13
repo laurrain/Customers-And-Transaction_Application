@@ -1,0 +1,156 @@
+@import "pageForm";
+@import "backgroundTuna";
+@import "loginPage";
+
+@defaultpadding: 15px;
+@defaultWidth: 50%;
+@input-margin:10px;
+
+
+@ligthshare: #fff;
+
+body{ padding-top:1px; }
+fieldset { overflow:hidden }
+.some-class { float:center; clear:none; }
+
+label { .some-class; display:block; padding: 2px 1em 0 0; }
+input[type=radio], input.radio { .some-class; margin: 2px 0 0 2px; }
+
+#container{
+  margin: 0 auto;
+  width: 10%;
+  height: 1000px;
+  background-color: #297A52;
+  margin-top: 50px;
+  padding: 15px;
+  text-align: center;
+}
+
+.container {
+    width: 1000px;
+    clear: both;
+}
+.container input {
+
+    .container;
+    width: 40%;
+}
+
+.content{
+  margin: 0 auto;
+  width: 20%;
+  height: 1000px;
+  background-color: #297A52;
+  margin-top: 50px;
+  padding: 15px;
+  text-align: center;
+}
+
+.fullscreen  {
+  background-image: url('/images/15.jpg');
+  font-family: "Arial";
+  margin: 0px;
+  padding: 0px;
+}
+
+#container{
+  .content;
+}
+
+#add-customer(@padding: @defaultpadding, @width:@defaultwidth) {
+  border : 1px solid;
+  .content(@padding);
+  .content(@width);
+}
+
+#add-custTran(@padding: @defaultpadding, @width:@defaultwidth) {
+  border : 1px solid;
+  .content(@padding);
+  .content(@width);
+}
+
+
+
+
+h1 {
+  text-align: center;
+  font: 5em Courier, "Comic Sans MS", Georgia, sans-serif;
+  font-weight: bolder;
+}
+
+
+
+a.homepage:link, a.homepage:visited {
+  padding: 1px 10px 1px 10px;
+  color: @ligthshare;
+  background: #555;
+  border-radius: 3px;
+  border: 1px outset rgba(50,50,50,.5);
+  font-family: georgia, serif;
+  font-size: 14px;
+  font-style: italic;
+  text-decoration: none;
+}
+
+a.homepage:hover, a.homepage:focus, a.homepage:active {
+  background-color: #666;
+}
+
+.userHeader{
+    color: @ligthshare;
+    display: inline;
+    margin-left: 2em;
+}
+
+.logoutHead(@margin:margin-right, @color: red){
+    background-color: @ligthshare;
+    padding: 2px;
+    border-radius: 3px;
+    float: right;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    .userHeader(@margin,@color);
+}
+
+
+
+.div {
+  background-color: #297A52;
+  font: 4em Courier, "Comic Sans MS", Georgia, sans-serif;
+  font-weight: bolder;
+  width: 100%;
+  height: 90px;
+}
+
+button {
+  width: 10%;
+  height: 80px;
+  font: 1em Courier, "Comic Sans MS", Georgia, sans-serif;
+  font-weight: bolder;
+}
+
+.nav {
+    color: #FFFFFF;
+    background-color: #555;
+    
+}
+
+
+.connect {
+    width: 305px;
+    margin: 35px auto 0 auto;
+    font-size: 18px;
+    font-weight: 700;
+    text-shadow: 0 1px 3px rgba(0,0,0,.2);
+}
+
+.connect a {
+    display: inline-block;
+    width: 32px;
+    height: 35px;
+    margin-top: 15px;
+    -o-transition: all .2s;
+    -moz-transition: all .2s;
+    -webkit-transition: all .2s;
+    -ms-transition: all .2s;
+}
