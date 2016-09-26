@@ -1,3 +1,23 @@
+<!doctype html>
+<html>
+    <head>
+        <title align="center">IQPoint</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="/CSS/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/CSS/bootstrap.css"/>
+        <link rel="stylesheet" type="text/css" href="/CSS/main_page.css"/>
+        <link rel="stylesheet" type="text/css" href="/CSS/bootstrap-responsive.css"/>
+        <link rel="stylesheet" type="text/css" href="/CSS/bootstrap-responsive.min.css"/>
+        
+        <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+        
+        <link rel="stylesheet" type="text/css" href="/CSS/login.css"/>
+        <link rel="stylesheet" type="text/css" href="/CSS/style.css"/>
+        <link rel="stylesheet" type="text/css" href="/CSS/tuna.css"/>
+        <link href='/CSS/simplesidebar.css' rel='stylesheet' type='text/css'/>
+   
+    </head>
+    <body>
 <div class="fullscreen"> 
 <div class="main-container container">
         <div class="nav navbar navbar-default">
@@ -13,7 +33,7 @@
         <form class="form-content"  action="/login" method="POST">
             <fieldset>
                 <input type="text" placeholder="username" class="form-input-control" name="username" value="{{username}}" />
-                <input type="password" placeholder="Password" class="form-input-control" name="password" value="{{password}}">
+                <input type="password" placeholder="Password" class="form-input-control" name="password" value="{{password}}" />
                  {{#if message}}
                 <p>{{message}}</p>
                 {{/if}}
@@ -22,23 +42,16 @@
         </form>
         <hr>
 
-                <p class="col-md-3 col-md-offset-3">Need an account?<p><form class="col-lg-6 fa fa-sign-in" action="/signup" method="GET"><br><br>
+                <p class="col-md-3 col-md-offset-3">Need an account?</p><form class="col-lg-6 fa fa-sign-in" action="/signup" method="GET"><br><br>
                     <button class="btn-lg btn-primary btn-block" type="submit">
                         Sign Up
                     </button>
                 </form>
         <!-- end of form-content -->
-        <!-- form footer -->
-        <div class="form-footer group">
-            <div class="social-container fr">
-                <a href="#" class="fontawesome-google-plus"></a>
-                <a href="#" class="fontawesome-twitter"></a>
-                <a href="#" class="fontawesome-facebook"></a>
-            </div>
-            <div style="clear:both;"></div>
-        </div>
         <!-- end of From footer -->
     <div style="clear:both;"></div>
     </div>
     <!-- end of form container -->
 </div>
+</body>
+</html>

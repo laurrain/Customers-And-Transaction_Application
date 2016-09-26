@@ -4,8 +4,8 @@
 <div class="container">
 	{{#data}}
 	<form class="col-sm-4 col-sm-offset-4" action="/customer/add_customer" method="POST">
-		Account: <input type="text" name="Account" value="{{Account}}"><br>	
-		Name: <input type="text" name="Name" value="{{Name}}"><br><br>
+		<p>Account: <input type="text" name="Account" data-bind="value: {{Account}}"></p><br>	
+		<p>Name: <input type="text" name="Name" data-bind="value: {{Name}}"></p><br><br>
 		<input type="submit" class="btn btn-warning btn-lg" value="Save"><br>
 	</form>
 	{{/data}}

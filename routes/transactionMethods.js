@@ -72,7 +72,7 @@ exports.get = function(req, res, next){
             if(err){
                     console.log("Error Selecting : %s ",err );
             }
-            res.render('add_CustTran',{page_title:" add_CustTran Customers - Node.js", data : rows[0]});      
+            res.render('customer_Transaction_add',{page_title:" customer_Transaction_add - Node.js", data : rows[0]});      
         }); 
     });
 };

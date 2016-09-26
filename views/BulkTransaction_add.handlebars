@@ -38,8 +38,8 @@ var dc= function(DC){
 	<fieldset class="radiogroup"> 
 		<legend>Select Debit or Credit</legend> 
   		<ul class="radio"> 
-    	<li><input type="radio" name="DC" onClick="JavaScript:dc("DC")" value="{{this.DC}}" /><label for="D">Debit</label></li> 
-    	<li><input type="radio" name="DC" onClick="JavaScript:dc("DC")" value="{{this.DC}}" /><label for="C">Credit</label></li> 
+    	<li><input type="text" name="DC" onClick="JavaScript:dc("DC")" value="{{this.DC}}D" /><label for="D">Debit</label></li> 
+    	<li><input type="text" name="DC" onClick="JavaScript:dc("DC")" value="{{this.DC}}C" /><label for="C">Credit</label></li> 
   		</ul> 
 	</fieldset>
 	<input type="submit" value="Post Batch"><input action="action" type="submit" value="Exits" onclick="history.go(-1);"/>

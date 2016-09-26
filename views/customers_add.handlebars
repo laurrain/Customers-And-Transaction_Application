@@ -5,8 +5,8 @@
 <div class="container">
 	{{#data}}
 	<form class="form-content  col-sm-4 col-sm-offset-4" action="/customer/customers_add" method="POST">
-		Account: <input type="text" name="Account" value="{{Account}}"><br>	
-		Name: <input type="text" name="Name" value="{{Name}}"><br><br>
+		<p>Account: <input type="text" name="Account" data-bind="value: {{Account}}"></p><br>	
+		<p>Name: <input type="text" name="Name" data-bind="value: {{Name}}"></p><br><br>
 		<input type="submit" class="btn btn-warning btn-lg" value="Save"><input action="action" type="submit" value="Cancel" onclick="history.go(-1);"/><br>
 	</form>
 	{{/data}}

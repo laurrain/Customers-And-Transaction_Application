@@ -21,25 +21,25 @@ var dc= function(DC){
 </script>
 <div class="container">
 {{#data}}
-<form class="col-md-4 col-md-offset-4" action="/CustTran/add_CustTran/{{id}}" method="POST">
-	<h4 class="text-center">Customer</h4>
-	Account: <input type="text" name="Account" value="{{Account}}" readonly><br>
-	Name: <input type="text" name="Name" value="{{Name}}" readonly><br>
-	Balance: <input type="text" name="Balance" value="{{Balance}}" readonly><br>
+<form class="col-md-4 col-md-offset-4" action="/CustTran/customer_Transaction_add/{{id}}" method="POST">
+	<!--h4 class="text-center">Customer</h4>
+	Account: <input type="text" name="Account" data-bind="value: {{Account}}" readonly><br>
+	Name: <input type="text" name="Name" data-bind="value: {{Name}}" readonly><br>
+	Balance: <input type="text" name="Balance" data-bind="value: {{Balance}}" readonly--><br>
 	<h4 class="text-center">Add Transaction</h4>
-	Date:    <input type="Date" name="Date" value="{{Date}}"><br>
-	Reference: <input type="text" name="Reference" value="{{Reference}}"><br>
-	Amount:  <input type="float" name="Amount" value="{{Amount}}"><br>
+	Date:    <input type="Date" name="Date" data-bind="value: {{Date}}"><br>
+	Reference: <input type="text" name="Reference" data-bind="value: {{Reference}}"><br>
+	Amount:  <input type="float" name="Amount" data-bind="value: {{Amount}}"><br>
 	<fieldset>
   <div class="some-class">
-    <input type="radio" class="radio" name="DC" value="{{DC}}D" id="D" />
+    <input type="radio" class="radio" name="DC" data-bind="value: {{DC}}D" id="D" />
     <label for="y">Debit</label>
-    <input type="radio" class="radio" name="DC" value="{{DC}}C" id="C" />
+    <input type="radio" class="radio" name="DC" data-bind="value: {{DC}}C" id="C" />
     <label for="z">Credit</label>
   </div>
 </fieldset>
 	
-	<input type="submit" value="Accept"><input action="action" type="button" value="Cancel" onclick="history.go(-1);"/>
+	<input type="submit" value="Accept"><input action="action" type="submit" value="Cancel" onclick="history.go(-1);"/>
 </form>
 {{/data}}
 </div>

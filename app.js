@@ -43,7 +43,7 @@ app.use(session({
   cookie : {maxAge : 30*60000}
 }))
 
-app.get("/", userMethods.checkUser, function(req, res){  
+app.get("/", function(req, res){  
 
   res.render("home", {administrator : administrator})
 })
@@ -68,20 +68,20 @@ app.get('/signup', function(req,res){
 });
 
 app.post('/signup', userMethods.signup);
-app.get("/admin_panel", userMethods.checkUser, userMethods.adminPanel)
-app.post("/admin_panel/:username", userMethods.checkUser, userMethods.promoteUser)
+app.get("/admin_panel",  userMethods.adminPanel)
+app.post("/admin_panel/:username", userMethods.promoteUser)
 
 
-app.get('/customer',userMethods.checkUser, customersMethods.show);
+app.get('/customer', customersMethods.show);
 app.get('/customer/edit/:id', customersMethods.get);
 app.post('/customer/update/:id', customersMethods.update);
-app.get('/sort', userMethods.checkUser, customersMethods.sort);
+app.get('/sort', customersMethods.sort);
 app.get('/customer/delete/:id',customersMethods.delete);
-app.get('/customers_add', userMethods.checkUser, function(req,res){
+app.get('/customers_add', function(req,res){
   res.render("customers_add", {data:customersMethods})
 })
-app.post('/customer/customers_add', userMethods.checkUser, customersMethods.add);
-app.get('/customers_add', userMethods.checkUser, function(req,res){
+app.post('/customer/customers_add', customersMethods.add);
+app.get('/customers_add', function(req,res){
   res.render("customers_add", {data:customersMethods})
 })
 app.get('/customer/customersList/:Name', customersMethods.getSearchCustomers);
@@ -89,34 +89,33 @@ app.get('/customer/search/:searchValue', customersMethods.getSearchCustomers);
 
 
 
-app.get('/sort', userMethods.checkUser, transactionMethods.sort);
+app.get('/sort', transactionMethods.sort);
 app.get('/CustTran/customer_Transaction_add/:id', transactionMethods.get);
 app.post('/CustTran/customer_Transaction_add/:id', transactionMethods.add);
 
-app.get('/add', userMethods.checkUser, function(req,res){
+app.get('/add', function(req,res){
   res.render("add", {data:customer})
 })
-app.get('/CustTran/add', userMethods.checkUser, bulkTransactionMethods.get);
-app.post('/CustTran/add', userMethods.checkUser, bulkTransactionMethods.add);
+app.get('/CustTran/add', bulkTransactionMethods.get);
+app.post('/CustTran/add',  bulkTransactionMethods.add);
 
 app.get('/customer/view/:id', enquiriesMethods.get)
 
-app.get('/custTran', userMethods.checkUser, function (req, res, next) {
+app.get('/custTran', function (req, res, next) {
   req.getConnection(function(err, connection){
     if (err) 
       return next(err);
         connection.query('SELECT * from CustTran', [], function(err, results) {
           if (err) return next(err);
-        res.render( 'custTran', {
+        res.render( 'customer_Transaction', {
           CustTran : results
         });
         
       });
-
   });
 });
 
-app.get('/customer_Transaction', userMethods.checkUser, function (req, res, next) {
+app.get('/customer_Transaction', function (req, res, next) {
   req.getConnection(function(err, connection){
     if (err) 
       return next(err);
@@ -131,15 +130,16 @@ app.get('/customer_Transaction', userMethods.checkUser, function (req, res, next
   });
 });
 
-app.get('/bulk', userMethods.checkUser, function(req,res){
+app.get('/bulk', function(req,res){
   res.render("bulk")
 })
+app.post('/CustTran/BulkTransaction_add', bulkTransactionMethods.add);
 
-app.get('/customer/sort/:sort_field', userMethods.checkUser, transactionMethods.sort);
+app.get('/customer/sort/:sort_field', transactionMethods.sort);
 
-app.get('/customer/sort/:sort_field', userMethods.checkUser, enquiriesMethods.sort);
+app.get('/customer/sort/:sort_field', enquiriesMethods.sort);
 
-app.get('/customer_Enquiries', userMethods.checkUser, function (req, res, next) {
+app.get('/customer_Enquiries', function (req, res, next) {
   req.getConnection(function(err, connection){
     if (err) 
       return next(err);
@@ -154,9 +154,10 @@ app.get('/customer_Enquiries', userMethods.checkUser, function (req, res, next) 
   });
 });
 
+
 app.get('/users', userMethods.getUserData);
 
-app.get("/*", userMethods.checkUser,function(req, res){
+app.get("/*", function(req, res){
   res.redirect("/login");
 })
 

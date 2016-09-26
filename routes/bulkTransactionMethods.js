@@ -26,7 +26,7 @@ exports.add = function (req, res, next) {
                     console.log("Error Updating : %s ",err );
           }
          
-              res.redirect('/CustTran');
+              res.render('/bulk');
         });
          
               res.redirect('/CustTran');
